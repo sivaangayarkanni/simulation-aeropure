@@ -19,26 +19,30 @@ export function Header({ onOpenDiagram, onToggleAgents, agentsOpen, tab, onTab }
           <svg viewBox="0 0 48 48" width="44" height="44">
             <defs>
               <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#3aa0ff" />
-                <stop offset="55%" stopColor="#2d8a5a" />
-                <stop offset="100%" stopColor="#0d4f9e" />
+                <stop offset="0%" stopColor="#2dd4bf" />
+                <stop offset="45%" stopColor="#22d3ee" />
+                <stop offset="100%" stopColor="#0d9488" />
+              </linearGradient>
+              <linearGradient id="agHot" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%" stopColor="#fb923c" />
+                <stop offset="100%" stopColor="#fbbf24" />
               </linearGradient>
             </defs>
-            <circle cx="24" cy="24" r="22" fill="url(#ag)" opacity="0.18" />
+            <circle cx="24" cy="24" r="22" fill="url(#ag)" opacity="0.2" />
             <path d="M24 6 L38 38 H30 L26 28 H22 L18 38 H10 Z" fill="url(#ag)" />
             <path
               d="M12 20 Q24 14 36 20"
               fill="none"
-              stroke="#5eb0ff"
+              stroke="#fb923c"
               strokeWidth="2"
-              opacity="0.8"
+              opacity="0.85"
             />
             <path
               d="M14 24 Q24 19 34 24"
               fill="none"
-              stroke="#8ec8ff"
+              stroke="#22d3ee"
               strokeWidth="1.5"
-              opacity="0.6"
+              opacity="0.75"
             />
           </svg>
         </div>

@@ -1,9 +1,34 @@
 :root {
+  /* Production palette — deep navy/slate + teal/cyan + amber */
+  --ap-bg-deep: #0a1628;
+  --ap-bg-mid: #0f1e36;
+  --ap-bg-slate: #132640;
+  --ap-text: #e2f0f7;
+  --ap-text-muted: #7a9bb0;
+  --ap-text-dim: #5a7a90;
+
+  --ap-teal: #2dd4bf;
+  --ap-teal-deep: #14b8a6;
+  --ap-cyan: #22d3ee;
+  --ap-cyan-soft: #67e8f9;
+
+  --ap-amber: #fbbf24;
+  --ap-orange: #fb923c;
+  --ap-hot: #f97316;
+  --ap-hot-deep: #ea580c;
+
+  --ap-green: #4ade80;
+  --ap-green-soft: #34d399;
+
+  --ap-glass: rgba(15, 35, 55, 0.55);
+  --ap-glass-border: rgba(45, 212, 191, 0.28);
+  --ap-glass-glow: 0 0 24px rgba(45, 212, 191, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
   font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.45;
   font-weight: 400;
-  color: #d7e3f4;
-  background-color: #0a1220;
+  color: var(--ap-text);
+  background-color: var(--ap-bg-deep);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -33,5 +58,5 @@ input {
 }
 
 a {
-  color: #5eb0ff;
+  color: var(--ap-cyan);
 }

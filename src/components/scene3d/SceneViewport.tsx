@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { ContactShadows, Html, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { Component, Suspense, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { AeroPureModule, type StageFocusId } from './AeroPureModule';
+import { AeroPureModule, type ShellMode, type StageFocusId } from './AeroPureModule';
 import { Pipeline } from '../Pipeline';
 import type { ControlsState, SystemMetrics } from '../../lib/types';
 
@@ -16,6 +16,7 @@ interface Props {
   flowChevronPhase: number;
   oilCoolantTempC: number;
   exploded: boolean;
+  shellMode: ShellMode;
 }
 
 function detectWebGL(): boolean {
@@ -64,9 +65,9 @@ function StageLabels({ selected }: { selected: string | null }) {
               fontSize: 11,
               padding: '3px 8px',
               borderRadius: 6,
-              background: selected === l.id ? 'rgba(94,176,255,0.35)' : 'rgba(10,18,32,0.65)',
-              border: '1px solid rgba(94,176,255,0.35)',
-              color: '#d7e3f4',
+              background: selected === l.id ? 'rgba(45,212,191,0.4)' : 'rgba(10,24,40,0.7)',
+              border: '1px solid rgba(45,212,191,0.4)',
+              color: '#e2f0f7',
               backdropFilter: 'blur(6px)',
             }}
           >
@@ -75,12 +76,12 @@ function StageLabels({ selected }: { selected: string | null }) {
         </Html>
       ))}
       <Html position={[-4.5, 1.0, 0]} center distanceFactor={10} style={{ pointerEvents: 'none' }}>
-        <div style={{ fontSize: 10, color: '#ff8a4c', whiteSpace: 'nowrap' }}>
+        <div style={{ fontSize: 10, color: '#fb923c', whiteSpace: 'nowrap', fontWeight: 600 }}>
           Inlet · Self-Sealing Dock
         </div>
       </Html>
       <Html position={[4.5, 1.0, 0]} center distanceFactor={10} style={{ pointerEvents: 'none' }}>
-        <div style={{ fontSize: 10, color: '#5eb0ff', whiteSpace: 'nowrap' }}>
+        <div style={{ fontSize: 10, color: '#22d3ee', whiteSpace: 'nowrap', fontWeight: 600 }}>
           Outlet · Quick-Disconnect
         </div>
       </Html>
@@ -108,18 +109,19 @@ function SceneInner(props: Props) {
   return (
     <>
       <PerspectiveCamera makeDefault position={[0.4, 2.8, 7.2]} fov={42} />
-      <color attach="background" args={['#070d18']} />
-      <fog attach="fog" args={['#070d18', 10, 22]} />
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[4, 8, 5]} intensity={1.35} />
-      <directionalLight position={[-5, 3, -3]} intensity={0.4} color="#8ec8ff" />
-      <hemisphereLight args={['#b8d4ff', '#1a2030', 0.35]} />
+      <color attach="background" args={['#0a1628']} />
+      <fog attach="fog" args={['#0a1628', 11, 24]} />
+      <ambientLight intensity={0.55} />
+      <directionalLight position={[4, 8, 5]} intensity={1.4} />
+      <directionalLight position={[-5, 3, -3]} intensity={0.45} color="#67e8f9" />
+      <hemisphereLight args={['#a5f3fc', '#1a2838', 0.4]} />
       <AeroPureModule
         running={props.controls.status === 'running'}
         fanRpm={props.metrics.fanRpm}
         oilFlowPhase={props.oilFlowPhase}
         serviceMode={props.controls.serviceMode}
         exploded={props.exploded}
+        shellMode={props.shellMode}
         selectedStageId={focus}
         onSelectStage={(id) => props.onSelectStage(id)}
         contamination={props.controls.contaminationLoad}
@@ -173,6 +175,13 @@ export function SceneViewport(props: Props) {
     return <Fallback2D {...props} />;
   }
 
+  const modeLabel =
+    props.shellMode === 'cutaway'
+      ? 'Cutaway'
+      : props.shellMode === 'xray'
+        ? 'X-ray'
+        : 'Solid';
+
   return (
     <div className="scene-viewport">
       <WebGLErrorBoundary onError={() => setFailed(true)}>
@@ -180,7 +189,7 @@ export function SceneViewport(props: Props) {
           dpr={[1, 1.75]}
           gl={{ antialias: true, powerPreference: 'high-performance', alpha: false }}
           onCreated={({ gl }) => {
-            gl.setClearColor('#070d18');
+            gl.setClearColor('#0a1628');
           }}
         >
           <Suspense fallback={null}>
@@ -189,7 +198,9 @@ export function SceneViewport(props: Props) {
         </Canvas>
       </WebGLErrorBoundary>
       <div className="scene-hud">
-        <span>Orbit · Scroll zoom · Click stage · Keys 1–4 focus · Space pause</span>
+        <span>
+          Orbit · Scroll zoom · Click stage · Keys 1–4 · Space pause · Shell: {modeLabel}
+        </span>
         <span className="hud-eff">
           Eff {props.metrics.filtrationEfficiencyPct.toFixed(0)}% · ΔT{' '}
           {props.metrics.deltaT.toFixed(0)}°C · {props.metrics.fanRpm.toLocaleString()} RPM

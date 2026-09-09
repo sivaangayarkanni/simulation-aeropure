@@ -20,6 +20,7 @@ const SceneViewport = lazy(async () => {
 });
 
 type TabId = 'simulation' | 'intelligence' | 'service';
+type ShellMode = 'solid' | 'cutaway' | 'xray';
 
 export default function App() {
   const { snap, setControls, reset, replaceCartridges, validateOnServer } = useSimEngine();
@@ -29,6 +30,7 @@ export default function App() {
   const [agentsOpen, setAgentsOpen] = useState(true);
   const [tab, setTab] = useState<TabId>('simulation');
   const [exploded, setExploded] = useState(false);
+  const [shellMode, setShellMode] = useState<ShellMode>('cutaway');
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -110,6 +112,22 @@ export default function App() {
                   {PRODUCT_META.tagline}
                 </span>
                 <div className="toolbar-actions">
+                  <div className="shell-mode-group" role="group" aria-label="Housing view">
+                    {([
+                      ['cutaway', 'Cutaway'],
+                      ['xray', 'X-ray'],
+                      ['solid', 'Solid'],
+                    ] as const).map(([id, label]) => (
+                      <button
+                        key={id}
+                        type="button"
+                        className={`btn shell-mode ${shellMode === id ? 'active' : ''}`}
+                        onClick={() => setShellMode(id)}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
                   <button
                     type="button"
                     className={`btn ${exploded ? 'primary' : ''}`}
@@ -142,6 +160,7 @@ export default function App() {
                   flowChevronPhase={snap.flowChevronPhase}
                   oilCoolantTempC={snap.oilCoolantTempC}
                   exploded={exploded}
+                  shellMode={shellMode}
                 />
               </Suspense>
               <LegendPanel metrics={metrics} serviceMode={controls.serviceMode} />

@@ -298,7 +298,7 @@ export const AGENTS: AgentDef[] = [
     role: 'Thermal & Flow Systems',
     specialty:
       'Heat Sink 1 lubricant oil cooling, Heat Sink 2 alloy fan, ΔT, backpressure, airflow',
-    accent: '#ff8a4c',
+    accent: '#fb923c',
     suggestedPrompts: [
       'How do Heat Sink 1 and the lubricant oil loop reduce exhaust temperature?',
       'Why does AeroPure claim lower backpressure than static DPFs?',
@@ -312,7 +312,7 @@ export const AGENTS: AgentDef[] = [
     role: 'Filtration Science',
     specialty:
       'Charcoal + synthetic layers, pore classes, PM10/PM2.5, VOC, PTFE',
-    accent: '#5eb0ff',
+    accent: '#2dd4bf',
     suggestedPrompts: [
       'Explain the 3 charcoal layers and their pore classes.',
       'How does the 6-layer synthetic array capture PM10 and PM2.5?',

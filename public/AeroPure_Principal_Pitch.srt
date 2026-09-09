@@ -1,0 +1,47 @@
+1
+00:00:00,000 --> 00:00:19,128
+AeroPure — transforming vehicle exhaust into clean air
+
+2
+00:00:19,128 --> 00:00:40,200
+Problem: collective vehicle pollution, especially in traffic
+
+3
+00:00:40,200 --> 00:00:58,128
+Portable retrofit filter — no engine modification
+
+4
+00:00:58,128 --> 00:01:23,448
+Multi-stage thermal + nano filtration · SDG 3, 9, 11 · TRL 3
+
+5
+00:01:23,448 --> 00:01:36,096
+Step 1: Self-Sealing Docking Mechanism
+
+6
+00:01:36,096 --> 00:01:53,592
+Step 2: Heat Sink 1 — circulating lubricant oil cooling
+
+7
+00:01:53,592 --> 00:02:15,888
+Step 3: 3-layer charcoal nano filter (coarse → zeolite → nano)
+
+8
+00:02:15,888 --> 00:02:33,144
+Step 4: Alloy Fan Cooling — flow + secondary cooling
+
+9
+00:02:33,144 --> 00:03:00,960
+Step 5: 6-layer synthetic array — PM10, PM2.5, to PTFE
+
+10
+00:03:00,960 --> 00:03:27,192
+Step 6: Quick-Disconnect outlet · unit complete · COGS ₹5.7k–₹8.7k
+
+11
+00:03:27,192 --> 00:04:04,200
+Digital twin simulation + live metrics + knowledge agents
+
+12
+00:04:04,200 --> 00:04:24,960
+Request for internship · Thank you · Sivaangayarkanni S
