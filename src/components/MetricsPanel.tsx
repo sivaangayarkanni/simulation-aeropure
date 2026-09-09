@@ -2,6 +2,8 @@ import type { SystemMetrics } from '../lib/types';
 
 interface Props {
   metrics: SystemMetrics;
+  oilCoolantTempC?: number;
+  serverValidated?: boolean;
 }
 
 function Metric({
@@ -26,16 +28,29 @@ function Metric({
   );
 }
 
-export function MetricsPanel({ metrics }: Props) {
+export function MetricsPanel({ metrics, oilCoolantTempC, serverValidated }: Props) {
   const { inletConc, outletConc } = metrics;
+  const oilTemp = oilCoolantTempC ?? metrics.oilCoolantTempC;
 
   return (
     <section className="panel metrics-panel">
-      <h2>Live Metrics</h2>
+      <h2>
+        Live Metrics
+        {serverValidated ? (
+          <span className="api-badge ok" title="Validated against /api/sim-state">
+            API
+          </span>
+        ) : (
+          <span className="api-badge" title="Using client sim engine (API unavailable locally)">
+            Client
+          </span>
+        )}
+      </h2>
       <div className="metrics-grid">
         <Metric label="Inlet Temp" value={metrics.inletTempC.toFixed(1)} unit="°C" accent="hot" />
         <Metric label="Outlet Temp" value={metrics.outletTempC.toFixed(1)} unit="°C" accent="cold" />
         <Metric label="ΔT" value={metrics.deltaT.toFixed(1)} unit="°C" accent="good" />
+        <Metric label="Oil Coolant" value={oilTemp.toFixed(1)} unit="°C" accent="hot" />
         <Metric
           label="Filtration Eff."
           value={metrics.filtrationEfficiencyPct.toFixed(1)}
@@ -45,6 +60,7 @@ export function MetricsPanel({ metrics }: Props) {
         <Metric label="Pressure Drop" value={metrics.pressureDropPa.toFixed(0)} unit="Pa" />
         <Metric label="Airflow" value={metrics.airflowM3h.toFixed(0)} unit="m³/h" />
         <Metric label="Fan RPM" value={metrics.fanRpm.toLocaleString()} unit="rpm" />
+        <Metric label="Filter Load" value={metrics.filterLoadingPct.toFixed(1)} unit="%" accent="warn" />
         <Metric label="Runtime" value={metrics.elapsedSec.toFixed(0)} unit="s" />
       </div>
 

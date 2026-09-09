@@ -59,6 +59,7 @@ export interface SystemMetrics {
   stages: StageMetrics[];
   elapsedSec: number;
   filterLoadingPct: number; // 0–100 clogging from runtime
+  oilCoolantTempC: number; // circulating lubricant oil temp
   oilServiceLifePct: number;
   charcoalServiceLifePct: number;
   syntheticServiceLifePct: number;

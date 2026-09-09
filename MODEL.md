@@ -23,3 +23,8 @@ Concept simulation only — not a certified engineering model.
 ## Particle animation
 
 Particles spawn at Exhaust Inlet. Removal follows stage survival curves. Colors morph red to blue along the thermal path.
+
+
+## Simulation engine
+
+Client `SimEngine` (`src/lib/simEngine.ts`) runs a fixed-timestep (1/60s) rAF loop: start/pause/reset, evolves media age, oil coolant temperature, fan angle, and flow phases. UI consumes snapshot state each frame. Optional Vercel `/api/sim-state` validates outlet metrics; local Vite falls back to the client engine.

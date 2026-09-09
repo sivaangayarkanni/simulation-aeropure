@@ -7,6 +7,9 @@ interface Props {
   selectedStageId: string | null;
   onSelectStage: (id: string) => void;
   fanAngle: number;
+  oilFlowPhase?: number;
+  heatShimmerPhase?: number;
+  oilCoolantTempC?: number;
 }
 
 export function CutawayViz({
@@ -15,10 +18,14 @@ export function CutawayViz({
   selectedStageId,
   onSelectStage,
   fanAngle,
+  oilFlowPhase = 0,
+  heatShimmerPhase = 0,
+  oilCoolantTempC,
 }: Props) {
   const running = controls.status === 'running';
   const service = controls.serviceMode;
   const undock = service ? 14 : 0;
+  const oilTemp = oilCoolantTempC ?? metrics.oilCoolantTempC;
   const temps = [
     metrics.inletTempC,
     metrics.stages[0]?.tempC ?? metrics.inletTempC,
@@ -195,6 +202,43 @@ export function CutawayViz({
           strokeLinecap="round"
         />
         <circle cx="205" cy="158" r="18" fill="rgba(255,120,40,0.25)" className={running ? 'oil-pulse' : undefined} />
+        {/* Circulating oil droplets along coil path */}
+        {running &&
+          [0, 1, 2, 3, 4, 5].map((i) => {
+            const t = (oilFlowPhase + i / 6) % 1;
+            const x = 145 + t * 150;
+            const y = 150 + Math.sin(t * Math.PI * 2) * 18;
+            return (
+              <circle
+                key={`oil-drop-${i}`}
+                cx={x}
+                cy={y}
+                r={3.5 + (i % 2)}
+                fill="#ffb060"
+                opacity={0.55 + 0.35 * Math.sin(t * Math.PI)}
+                filter="url(#softGlow)"
+              />
+            );
+          })}
+        {/* Heat shimmer waves at oil sink */}
+        {running &&
+          [0, 1, 2].map((i) => {
+            const o = 0.15 + ((heatShimmerPhase + i * 0.25) % 1) * 0.25;
+            return (
+              <ellipse
+                key={`shimmer-${i}`}
+                cx={170 + i * 28}
+                cy={140}
+                rx={10 + i * 2}
+                ry={28}
+                fill="none"
+                stroke={`rgba(255,140,40,${o})`}
+                strokeWidth="1.5"
+                className="heat-shimmer-ellipse"
+                style={{ animationDelay: `${i * 0.35}s` }}
+              />
+            );
+          })}
         {/* Bottom canisters */}
         {[0, 1].map((i) => (
           <rect
@@ -215,7 +259,7 @@ export function CutawayViz({
           CIRCULATING, REPLACEABLE LUBRICANT OIL
         </text>
         <text x="205" y="238" textAnchor="middle" className="svg-label temp">
-          {temps[1].toFixed(0)}°C
+          Gas {temps[1].toFixed(0)}°C · Oil {oilTemp.toFixed(0)}°C
         </text>
       </g>
 
@@ -319,6 +363,17 @@ export function CutawayViz({
           </g>
           <circle r="12" fill="#e0e8f0" stroke="#607080" strokeWidth="2" />
           <circle r="4" fill="#405060" />
+          {running && (
+            <circle
+              r="56"
+              fill="none"
+              stroke="rgba(126,200,255,0.25)"
+              strokeWidth="2"
+              strokeDasharray="6 10"
+              className="fan-spin-ring"
+              transform={`rotate(${-fanAngle * 0.5})`}
+            />
+          )}
         </g>
         <text x="635" y="240" textAnchor="middle" className="svg-label callout-fan">
           ALLOY FAN COOLING

@@ -332,8 +332,8 @@
 }
 
 @keyframes oil-shimmer {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.35); }
+  0%, 100% { filter: brightness(1) saturate(1); }
+  50% { filter: brightness(1.55) saturate(1.25); }
 }
 
 .oil-pulse {
@@ -341,8 +341,8 @@
 }
 
 @keyframes oil-pulse {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.25); }
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
 }
 
 .flow-arrow-hot {
@@ -354,12 +354,56 @@
 }
 
 @keyframes pulse-hot {
-  0%, 100% { opacity: 0.45; transform: translateX(0); }
-  50% { opacity: 1; transform: translateX(4px); }
+  0%, 100% { opacity: 0.4; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(8px); }
 }
 @keyframes pulse-cold {
-  0%, 100% { opacity: 0.4; transform: translateX(0); }
-  50% { opacity: 1; transform: translateX(4px); }
+  0%, 100% { opacity: 0.35; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(8px); }
+}
+
+.heat-shimmer-ellipse {
+  animation: heat-shimmer-rise 1.8s ease-in-out infinite;
+}
+@keyframes heat-shimmer-rise {
+  0%, 100% { opacity: 0.2; transform: translateY(0) scaleY(1); }
+  50% { opacity: 0.65; transform: translateY(-6px) scaleY(1.15); }
+}
+
+.fan-spin-ring {
+  transform-origin: center;
+}
+
+.pipeline-panel.is-running .pipeline-chassis {
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(94, 176, 255, 0.12),
+    0 0 24px rgba(255, 120, 40, 0.08);
+}
+
+.metrics-panel h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.api-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 150, 180, 0.35);
+  color: #8aa4bc;
+  background: rgba(40, 60, 90, 0.4);
+}
+
+.api-badge.ok {
+  color: #7dffb0;
+  border-color: rgba(80, 220, 140, 0.45);
+  background: rgba(20, 80, 50, 0.35);
 }
 
 .temp-legend {
@@ -567,6 +611,7 @@
 .metric.hot .metric-value { color: #ff8a6a; }
 .metric.cold .metric-value { color: #7ec8ff; }
 .metric.good .metric-value { color: #5fd0a0; }
+.metric.warn .metric-value { color: #f0c050; }
 
 .conc-table {
   display: flex;

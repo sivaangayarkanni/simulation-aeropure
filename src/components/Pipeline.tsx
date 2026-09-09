@@ -9,12 +9,26 @@ interface Props {
   controls: ControlsState;
   selectedStageId: string | null;
   onSelectStage: (id: string) => void;
+  fanAngle: number;
+  oilFlowPhase: number;
+  heatShimmerPhase: number;
+  flowChevronPhase: number;
+  oilCoolantTempC: number;
 }
 
-export function Pipeline({ metrics, controls, selectedStageId, onSelectStage }: Props) {
+export function Pipeline({
+  metrics,
+  controls,
+  selectedStageId,
+  onSelectStage,
+  fanAngle,
+  oilFlowPhase,
+  heatShimmerPhase,
+  flowChevronPhase,
+  oilCoolantTempC,
+}: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 1100, h: 320 });
-  const [fanAngle, setFanAngle] = useState(0);
   const running = controls.status === 'running';
 
   useEffect(() => {
@@ -28,24 +42,8 @@ export function Pipeline({ metrics, controls, selectedStageId, onSelectStage }: 
     return () => ro.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!running) return;
-    let raf = 0;
-    let last = performance.now();
-    const loop = (now: number) => {
-      const dt = (now - last) / 1000;
-      last = now;
-      const rps = metrics.fanRpm / 60;
-      // Visual spin scaled down for readability
-      setFanAngle((a) => (a + rps * 360 * dt * 0.35) % 360);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, [running, metrics.fanRpm]);
-
   return (
-    <section className={`pipeline-panel ${controls.serviceMode ? 'service-mode' : ''}`}>
+    <section className={`pipeline-panel ${controls.serviceMode ? 'service-mode' : ''} ${running ? 'is-running' : ''}`}>
       <div className="pipeline-labels-top">
         <span className="flow-tag hot">{PORTS.inlet}</span>
         <span className="phase-tag">{PHASES[0].name}</span>
@@ -59,6 +57,8 @@ export function Pipeline({ metrics, controls, selectedStageId, onSelectStage }: 
           running={running}
           width={size.w}
           height={size.h}
+          flowChevronPhase={flowChevronPhase}
+          heatShimmerPhase={heatShimmerPhase}
         />
         <div className="cutaway-layer" style={{ width: size.w, height: size.h }}>
           <CutawayViz
@@ -67,6 +67,9 @@ export function Pipeline({ metrics, controls, selectedStageId, onSelectStage }: 
             selectedStageId={selectedStageId}
             onSelectStage={onSelectStage}
             fanAngle={fanAngle}
+            oilFlowPhase={oilFlowPhase}
+            heatShimmerPhase={heatShimmerPhase}
+            oilCoolantTempC={oilCoolantTempC}
           />
         </div>
       </div>
@@ -79,8 +82,8 @@ export function Pipeline({ metrics, controls, selectedStageId, onSelectStage }: 
       </div>
 
       <p className="click-hint">
-        Click any stage for verbatim layer names, capture rates (Large dust / PM10 / PM2.5 / Fine /
-        VOC-odor), pore class, and service life %. Keyboard: Space = Start/Pause.
+        Simulation auto-runs on load. Click any stage for verbatim layer names, capture rates (Large dust /
+        PM10 / PM2.5 / Fine / VOC-odor), pore class, and service life %. Keyboard: Space = Start/Pause.
       </p>
     </section>
   );

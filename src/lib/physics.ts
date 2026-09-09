@@ -229,6 +229,13 @@ export function computeMetrics(
   const outletTempC = clamp(temp, 18, inletTempC);
   const filtrationEfficiencyPct = overallRemoval(inletConc, conc) * 100;
 
+  // Steady-state oil coolant estimate (engine smooths this further)
+  const oilCoolantTempC = clamp(
+    38 + (inletTempC - (stages[0]?.tempC ?? inletTempC)) * 0.55 + contaminationLoad * 8 + filterLoadingPct * 0.12,
+    30,
+    160,
+  );
+
   return {
     inletTempC,
     outletTempC,
@@ -242,6 +249,7 @@ export function computeMetrics(
     stages,
     elapsedSec,
     filterLoadingPct,
+    oilCoolantTempC,
     oilServiceLifePct: oilHealth * 100,
     charcoalServiceLifePct: charcoalHealth * 100,
     syntheticServiceLifePct: syntheticHealth * 100,
@@ -264,7 +272,7 @@ export function tempToColor(tempC: number, min = 25, max = 300): string {
 
 export function defaultControls(): ControlsState {
   return {
-    status: 'idle',
+    status: 'running',
     inletTempC: 220,
     contaminationLoad: 0.65,
     fanSpeedPct: 55,

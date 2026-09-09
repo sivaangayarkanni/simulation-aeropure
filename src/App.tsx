@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Pipeline } from './components/Pipeline';
 import { Controls } from './components/Controls';
@@ -6,37 +6,17 @@ import { MetricsPanel } from './components/MetricsPanel';
 import { DetailDrawer } from './components/DetailDrawer';
 import { ReferencePanel } from './components/ReferencePanel';
 import { LegendPanel } from './components/LegendPanel';
-import { computeMetrics, defaultControls } from './lib/physics';
+import { useSimEngine } from './hooks/useSimEngine';
 import { STAGES, SYSTEM_ADVANTAGES } from './lib/stages';
 import type { ControlsState } from './lib/types';
 import './App.css';
 
 export default function App() {
-  const [controls, setControls] = useState<ControlsState>(defaultControls);
-  const [elapsed, setElapsed] = useState(0);
-  const [serviceResetAt, setServiceResetAt] = useState(0);
+  const { snap, setControls, reset, replaceCartridges, validateOnServer } = useSimEngine();
+  const { controls, metrics } = snap;
   const [selectedStageId, setSelectedStageId] = useState<string | null>(null);
   const [diagramOpen, setDiagramOpen] = useState(false);
   const [splitView, setSplitView] = useState(false);
-
-  const metrics = useMemo(
-    () => computeMetrics(controls, elapsed, serviceResetAt),
-    [controls, elapsed, serviceResetAt],
-  );
-
-  useEffect(() => {
-    if (controls.status !== 'running') return;
-    let raf = 0;
-    let last = performance.now();
-    const loop = (now: number) => {
-      const dt = (now - last) / 1000;
-      last = now;
-      setElapsed((e) => e + dt);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, [controls.status]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -44,29 +24,38 @@ export default function App() {
       const tag = (e.target as HTMLElement)?.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'BUTTON') return;
       e.preventDefault();
-      setControls((c) => ({
-        ...c,
-        status: c.status === 'running' ? 'paused' : 'running',
-      }));
+      setControls({
+        status: controls.status === 'running' ? 'paused' : 'running',
+      });
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  }, [controls.status, setControls]);
 
-  const onChange = useCallback((patch: Partial<ControlsState>) => {
-    setControls((c) => ({ ...c, ...patch }));
-  }, []);
+  const onChange = useCallback(
+    (patch: Partial<ControlsState>) => {
+      setControls(patch);
+      // Opportunistic server validate when sliders settle (fire-and-forget)
+      if (
+        patch.inletTempC !== undefined ||
+        patch.contaminationLoad !== undefined ||
+        patch.fanSpeedPct !== undefined
+      ) {
+        const next = { ...controls, ...patch };
+        void validateOnServer({
+          inletTempC: next.inletTempC,
+          contaminationLoad: next.contaminationLoad,
+          fanSpeedPct: next.fanSpeedPct,
+        });
+      }
+    },
+    [controls, setControls, validateOnServer],
+  );
 
   const onReset = useCallback(() => {
-    setControls(defaultControls());
-    setElapsed(0);
-    setServiceResetAt(0);
+    reset();
     setSelectedStageId(null);
-  }, []);
-
-  const onReplaceCartridges = useCallback(() => {
-    setServiceResetAt(elapsed);
-  }, [elapsed]);
+  }, [reset]);
 
   const selectedStage = STAGES.find((s) => s.id === selectedStageId) ?? null;
   const selectedMetrics =
@@ -88,6 +77,11 @@ export default function App() {
             onSelectStage={(id) =>
               setSelectedStageId((cur) => (cur === id ? null : id))
             }
+            fanAngle={snap.fanAngleDeg}
+            oilFlowPhase={snap.oilFlowPhase}
+            heatShimmerPhase={snap.heatShimmerPhase}
+            flowChevronPhase={snap.flowChevronPhase}
+            oilCoolantTempC={snap.oilCoolantTempC}
           />
           <LegendPanel metrics={metrics} serviceMode={controls.serviceMode} />
         </div>
@@ -96,9 +90,13 @@ export default function App() {
             controls={controls}
             onChange={onChange}
             onReset={onReset}
-            onReplaceCartridges={onReplaceCartridges}
+            onReplaceCartridges={replaceCartridges}
           />
-          <MetricsPanel metrics={metrics} />
+          <MetricsPanel
+            metrics={metrics}
+            oilCoolantTempC={snap.oilCoolantTempC}
+            serverValidated={snap.serverValidated}
+          />
         </div>
         {splitView && <ReferencePanel open mode="split" onClose={() => setSplitView(false)} />}
       </main>
@@ -107,7 +105,12 @@ export default function App() {
         <div>
           <strong>Legend &amp; Summary — SYSTEM ADVANTAGES:</strong> {SYSTEM_ADVANTAGES}
         </div>
-        <div className="footer-meta">AeroPure™ Concept Simulation · Pure frontend · No backend</div>
+        <div className="footer-meta">
+          AeroPure™ Concept Simulation · Client sim engine
+          {snap.serverValidated ? ' · API validated' : ' · API optional (client fallback)'}
+          {' · '}
+          frame {snap.frame}
+        </div>
       </footer>
 
       <DetailDrawer
