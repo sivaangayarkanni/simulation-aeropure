@@ -1,0 +1,220 @@
+AeroPure :Transforming Vehicle Exhaust into Clean Air through Dynamic Flow Management
+and Nano-Scale Molecular Capture
+Theme: Automotive technology
+
+
+                                          Name:Sivaangayarkanni S
+                                          Designation: UG student
+                                          Organization: Sri Eshwar College of Engineering
+                                          Location: Coimbatore
+ 1. Problem
+Problem statement :
+1.Pollution is not a problem from a single vehicle but collective pollution from all vehicles is a major problem.
+2.In a moving highway ,we will not identify any pollution,it isn’t the same in traffic signals,we will feel how the air is
+polluted,it doesn’t mean the highway is not polluted ,that is why,taking in the account of colllective pollution is
+necessary.
+3.Eventhough,the new vehicles designed with less pollution concepts,in countries like India,its obvious that many are
+using same vehicles for so many years,they find it diificult to comply with modern concepts.
+4.Due to these pollution,government has to spend a lot in terms of :
+4.1.Health management
+4.2.Environmental management
+4.3.Deforestation
+
+Existing Solution:
+1.Instead of preventing,current solutions are aftermath solutions only,for example:Treatement is provide after getting
+affected by air pollution.
+2.Conventional Static Diesel Particulate Filters : Standard factory-fitted or retrofit ceramic honeycomb filters used to
+capture soot.
+3.Selective Catalytic Reduction Systems: Fluid-based injection systems coupled with catalysts to primarily target
+nitrogen oxides.
+
+it will take more time and money to replace with existing technologies
+what we are suggesting is a solution that will not take money and time .
+we aren’t modifying any engines,we are creating a potable filter fitted outside of the engine.
+2. Customer Segments
+
+ 1. All Vehicle Owners: Commercial fleet operators, logistics companies, and everyday diesel
+ vehicle owners face constant struggles with strict urban emission norms, frequent DPF
+ clogging during stop-and-go traffic, and expensive OEM replacement cycles. AeroPure
+ addresses this by offering a cost-effective, modular aftermarket solution featuring quick-
+ disconnect couplings and real-time dashboard monitoring that allows for rapid, hazard-free
+ servicing and minimized vehicle downtime.
+
+
+ 2. Small & Medium Enterprises (MSME) Industries: Small-scale manufacturing units,
+ commercial complexes, and workshops relying heavily on diesel backup generators or
+ localized industrial exhaust equipment require affordable ways to comply with pollution
+ control board regulations. AeroPure provides these MSMEs with a compact, low-
+ backpressure, multi-stage filtration system that delivers efficient particulate scrubbing and
+ thermal management without the massive footprint or water consumption of traditional
+ industrial wet scrubbers.
+3. Unique Value Proposition (USP)
+ Key Benefits
+1.Preventing Pollution at a Very Low Cost: Designed with affordable, commercially off-the-shelf (COTS) components and
+replaceable modular layers.
+2.inimized Engine Strain & Low Backpressure: Unlike conventional static filters that trap soot and choke the engine,
+AeroPure's integrated thermal management (heat sinks and fluid cooling) and graded pore structure maintain smooth
+exhaust flow to protect engine efficiency and save fuel.
+3.Rapid, Hazard-Free Modular Servicing:Equipped with self-sealing docking mechanisms and quick-disconnect couplings,
+the system allows operators or technicians to swap filter modules in minutes without toxic exposure or complicated
+teardowns.
+
+Differentiators:
+1.Effortless Government Norms & Compliance: Built to proactively meet strict urban Pollution Control Board (PCB) and
+periodic vehicle emission test (PUC) standards, helping both vehicle owners and MSME generators avoid hefty fines and legal
+shutdowns.
+2.Multi-Stage Active Thermal & Nano-Filtration: Combines oil-cooled heat sinks, nano-engineered charcoal matrices, and
+synthetic arrays into a single compact unit outperforming single-stage DPFs that frequently fail under heavy thermal stress.
+3.Real-Time Digital Monitoring: Unlike traditional passive exhaust pipes that operate blindly, AeroPure integrates live sensor
+tracking and dashboard alerts to notify users of filter saturation before performance drops.
+
+Tagline:
+Modular Filtration, Zero Compromise: Smart Exhaust Purification for Vehicles and MSME.
+4. Competitive Advantage
+
+ How your product is advantageous than your competitor's.
+
+ Compare the advantages in a tabular form.
+
+             Feature                 Your Product                       Competitor
+ Size of product            Small and compact               Larger
+ Cost of product            Affordable and low              higher
+ Running cost               Very low cost                   Very high
+ Lifetime                   Longer years(approx-10 years)   Not applicable
+ 5. Solution
+Product Overview:
+
+1.Multi-Stage Membrane & Nano-Filtration: Combines oil-cooled heat sinks, nano-engineered charcoal matrices, and graded
+synthetic arrays into a compact unit to capture fine particulate matter effectively.
+2.Real-Time Sensor Diagnostics: Integrates continuous particulate and temperature monitoring to track filter saturation
+levels and alert users before efficiency drops.
+3.Modular Service Architecture: Built with quick-disconnect couplings and self-sealing docking mechanisms that allow
+individual filter layers to be swapped out rapidly and safely.
+
+Problem–Solution Fit:
+
+1.Easily Fitted & Portable: Designed as a compact, retrofit unit that can be easily installed on diverse vehicle exhaust tailpipes
+and small MSME generator stacks without altering core engine architecture.
+2.Eliminates Urban Clogging & Backpressure: Solves the frequent urban stop-and-go clogging issue of conventional DPFs by
+utilizing optimized thermal management and low-backpressure graded pores to protect engine performance.
+3.Affordable Maintenance vs. Expensive Replacements: Replaces costly OEM filter overhauls with inexpensive, modular
+replacement layers that fit a student-friendly or small-business budget.
+
+SDG: 3,9,11
+TRL: 3
+Phase 1, Stage 3: 3-Layer Charcoal Nano-M aterial Filter    Phase 2, Stage 4: 6-Layer Synthetic Array
+
+•Layer 1 (Coarse Carbon): Features a large pore network     •Layer 1 (Coarse Synthetic Mesh): Acts as a mechanical pre-filter for large dust
+to capture macro-particles and heavy volatile compounds     removal to protect subsequent finer layers.
+early in the exhaust stream.                                •Layer 2 (MiddleEm Microfiber): Engineered for PM10 filtration to capture dust,
+                                                            pollen, and larger mold spores.
+•Layer 2 (Carbon + Zeolite): Utilizes medium pores to       •Layer 3 (Electrostatic Filter): Employs a static electric charge to attract and trap
+combine organic gas adsorption with molecular sieving for   dangerous PM2.5 combustion particles and fine organic compounds.
+medium-sized molecules and gas-phase contaminants.          •Layer 4 (Nanofiber Barrier): Features a tight membrane layer dedicated to
+                                                            stopping sub-micron pollutants through mechanical interception.
+•Layer 3 (Nano Membrane): Contains small, fine pores        •Layer 5 (Activated Carbon + Zeolite Composite): Provides secondary gas-phase
+acting as a high-density barrier against microscopic        purification to adsorb remaining odors, chemical vapors, and toxic gasses.
+particulates and complex chemical structures.               •Layer 6 (PTFE Protective Membrane): A durable, chemical-resistant
+                                                            Polytetrafluoroethylene barrier protecting the final filter array integrity before
+                                                            clean air exits.
+6. Channels
+
+Customer Acquisition & Distribution Channels
+1.Automobile Service Centers & Aftermarket Stores: Partnering with local garages, vehicle service stations,
+and automotive spare parts shops to stock and recommend AeroPure as a retrofittable upgrade during
+routine vehicle maintenance and PUC checks.
+
+2.Hardware & Industrial Equipment Suppliers: Collaborating with local hardware and generator dealers who
+cater to Small and Medium Enterprises (MSMEs), allowing businesses to easily purchase exhaust filtration
+add-ons alongside backup power equipment.
+
+3.Automotive Repair Workshops & Fabricators: Engaging directly with local mechanic workshops and metal
+fabrication hubs to install, service, and swap modular filter cartridges using quick-disconnect couplings.
+
+4.Direct Sales & B2B Fleets: Leveraging direct outreach to commercial logistics companies, delivery fleets,
+and small-scale industrial unit owners to offer customized bulk installations and pilot demonstrations.
+7. Revenue Streams
+
+ 1.Direct Hardware Unit Sales: One-time retail sales of complete AeroPure filtration systems to
+ individual vehicle owners, logistics fleet operators, and Small and Medium Enterprise (MSME)
+ diesel generator owners.
+
+ 2.Modular Filter Cartridge Replacements (Recurring Revenue): Selling affordable, consumable
+ replacement layers (such as nano-engineered charcoal matrices and graded synthetic filter arrays)
+ as periodic maintenance accessories when filters saturate.
+
+ 3.B2B Fleet Maintenance Subscriptions: Offering scheduled maintenance contracts and bulk
+ replacement packages to commercial delivery fleets, bus operators, and industrial facilities.
+
+ 4.Value-Added IoT Dashboard / Diagnostics Upgrades: Providing premium digital features,
+ advanced emission-tracking analytics, and automated maintenance alert subscriptions for
+ commercial fleet managers.
+      8. Cost Structure
+Phase 1: Thermal & Nanofiltration Module (Inlet Side)                                     Phase 2: Post-Treatment & Synthetic Array (Outlet Side)
+                                                                                          Stage 3 (Outlet): Secondary Cooling & Fan
+Stage 1: Heat Sink & Lubricant Cooling Module*                                            Cost Range:₹900 – ₹1,400 per unit
+Cost Range:₹1,200 – ₹1,800 per unit                                                       Low-Cost Optimization:Standard off-the-shelf exhaust-rated cooling fans and simplified
+Low-Cost Optimization:Utilizing standard stamped aluminum cooling fins and recycled-      heat dissipation plates.
+grade metal tubing instead of expensive exotic high-temperature metal alloys.
+                                                                                          Stage 4: 6-Layer Synthetic Array (Simplified Cost-Effective Media)
+Stage 3: 3-Layer Charcoal Filter (Budget Configuration)                                   Cost Range:₹1,500 – ₹2,300 per unit
+Cost Range:₹800 – ₹1,200 per unit                                                         Breakdown:
+                                                                                          Layer 1 (Coarse Synthetic Mesh): Standard polypropylene mesh pre-filter (₹100 – ₹150).
+Breakdown:                                                                                Layer 2 (Microfiber Layer): Non-woven polyester fiber for dust and PM10 (₹150 – ₹250).
+Layer 1 (Coarse Carbon): Standard commercial granular activated carbon (₹150 – ₹250).     Layer 3 (Electrostatic Layer): Standard electret synthetic needle-felt (₹250 – ₹350).
+Layer 2 (Carbon + Zeolite Blend): Bulk-mixed industrial zeolite and low-cost carbon        Layer 4 (Fine Particulate Barrier): Multi-layer cellulose-synthetic blended paper media
+powder (₹300 – ₹450).                                                                     (₹300 – ₹450).
+Layer 3 (Fine Mesh Barrier): Standard multi-weave fine metal wire mesh replacing costly    Layer 5 (Adsorption Layer): Low-density carbon-impregnated foam mat (₹400 – ₹600).
+proprietary nano-membranes (₹350 – ₹500).                                                  Layer 6 (Protective Backing): Standard high-density polyethylene (HDPE) or economic
+                                                                                          mesh backing instead of expensive PTFE membranes (₹300 – ₹500).
+
+
+
+        External Hardware & Casing
+        1.Docking Mechanism & Couplings:₹700 – ₹1,100 per unit
+        2.Utilizing standard industrial quick-release snap fittings and molded rubber seals instead of custom-machined precision valves.
+        3.Casing & Assembly Overheads: ₹600 – ₹900 per unit
+        4. Standard sheet-metal rolling for the outer sleeve and automated assembly to reduce labor costs.
+        Summary Cost Profile (Low-Cost Production)
+
+        1.Total Estimated Direct Production Cost (COGS):₹5,700 – ₹8,700 per unit
+9. Key Metrics
+
+Business KPIs
+Customer Metrics:
+
+1.Retention & Replacement Rate: Tracking how frequently customers return to purchase consumable filter
+cartridge replacements.
+
+2.Emission Compliance Success: Measuring the percentage of vehicle and MSME generator owners who
+successfully pass local pollution control board tests.
+
+Financial Metrics:
+
+1.Gross Profit Margin: Calculating the profitability per unit based on low-cost raw materials and COTS
+components.
+
+2.Recurring Revenue Share: Monitoring the steady income generated specifically from periodic modular filter
+replacements and maintenance subscriptions.
+10. Unfair Advantage
+
+Unfair Advantage & Competitive Moat
+Unique Strategic Assets:
+
+1.Proprietary Modular Architecture: The self-sealing docking mechanism and quick-disconnect coupling design
+allow for instant, tool-free layer swaps, completely bypassing the welded, non-serviceable limitations of
+conventional exhaust filters.
+
+2.Integrated Dual-Phase Thermal & Nano-Filtration: Combining oil-cooled heat sinks with a multi-layered
+nano-charcoal and graded synthetic array into a single compact unit delivers superior particulate capture
+without high backpressure.
+
+Long-Term Defensibility:
+
+1.Low-Cost Scalability: Built using affordable Commercial Off-The-Shelf (COTS) materials, creating high entry
+barriers for competitors trying to match our low production and replacement costs.
+
+2.High Switching Costs & Recurring Ecosystem: Once vehicle fleets and MSME operators adopt the modular
+housing, they remain locked into purchasing proprietary, low-cost consumable filter cartridge replacements.
+THANKYOU
+

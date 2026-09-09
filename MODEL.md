@@ -28,3 +28,9 @@ Particles spawn at Exhaust Inlet. Removal follows stage survival curves. Colors 
 ## Simulation engine
 
 Client `SimEngine` (`src/lib/simEngine.ts`) runs a fixed-timestep (1/60s) rAF loop: start/pause/reset, evolves media age, oil coolant temperature, fan angle, and flow phases. UI consumes snapshot state each frame. Optional Vercel `/api/sim-state` validates outlet metrics; local Vite falls back to the client engine.
+
+## v3 additions
+
+- Primary view is R3F 3D (`SceneViewport`); 2D SVG cutaway remains as WebGL fallback.
+- Knowledge agents retrieve from encoded product-deck sections only (see `knowledgeBase.ts`).
+- Optional live `simSnapshot` fields are labeled educational context in agent answers.

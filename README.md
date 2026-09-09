@@ -1,78 +1,137 @@
-# AeroPure Modular Multi-Stage Exhaust Filtration Simulation
+# AeroPure — Modular Multi-Stage Exhaust Filtration (v3)
 
-Interactive cutaway simulation of **MODULAR MULTI-STAGE EXHAUST FILTRATION SYSTEM: AeroPure Concept** — **ENGINEERED FOR MODULAR SERVICE**.
+Competition-ready **3D simulation**, **deck-grounded knowledge agents**, and **Vercel serverless APIs** for **AeroPure**: *Transforming Vehicle Exhaust into Clean Air through Dynamic Flow Management and Nano-Scale Molecular Capture*.
 
-Pure React + TypeScript (Vite). No backend.
+**MSME Idea Hackathon 6.0** · Smart and Sustainable MSMEs  
+Author: **Sivaangayarkanni S** · UG student · Sri Eshwar College of Engineering, Coimbatore
 
-## How to run
+Tagline: **Modular Filtration, Zero Compromise: Smart Exhaust Purification for Vehicles and MSME.**
 
-1. Change directory to /workspace/aeropure-sim
-2. Install packages with the project package manager
-3. Start the Vite development server (script name: dev)
-4. Open http://localhost:5173
+## Quick start
 
-### Package scripts
+```bash
+cd /workspace/aeropure-sim
+npm install
+npm run dev          # http://localhost:5173  (Vite + /api/* middleware)
+npm run build        # tsc -b && vite build → dist/
+npm run preview      # serve dist/
+```
 
-- dev: Vite development server
-- build: Typecheck (tsc -b) and production bundle to dist/
-- preview: Serve production bundle
-- lint: oxlint
+### Deploy (Vercel)
 
-## Diagram to UI mapping (verbatim)
+- Static SPA from `dist/` + serverless functions in `api/`
+- `vercel.json` rewrites non-API routes to `index.html`
+- Parent agent: push main + Vercel redeploy (this tree is left ready)
 
-Source of truth: `public/concept-diagram.png` (Concept Diagram lightbox or Split: Sim | Diagram).
+```bash
+npx vercel --prod   # or connect the GitHub repo in Vercel dashboard
+```
 
-- MODULAR MULTI-STAGE EXHAUST FILTRATION SYSTEM → Header H1
-- AeroPure Concept → Header concept span
-- ENGINEERED FOR MODULAR SERVICE → Header tagline + Service Mode banner
-- Exhaust Inlet (Hot, Particulate-laden) → Pipeline top tag + SVG inlet label
-- Self-Sealing Docking Mechanism → SVG docking ring + service undock
-- Phase 1: Thermal & Nanofiltration Module (Inlet side) → Phase banner / top tag
-- Stage 1: Heat Sink 1 (Lubricant Oil Cooling) → Cutaway S1 + drawer
-- CIRCULATING, REPLACEABLE LUBRICANT OIL → S1 callout (coil + canisters)
-- Stage 2: 3-Layer Charcoal Nano-Material Filter → Cutaway S2 + drawer
-- Nano-engineered Carbon matrix → S2 subtitle
-- Layer 1: Coarse Carbon (Large Pore) → S2 strata + drawer layer metrics
-- Layer 2: Carbon+Zeolite (Medium Pore) → S2 strata + drawer
-- Layer 3: Nano Membrane (Small Pore / Fine) → S2 strata + drawer
-- CHARCOAL NANO-MATERIAL STRUCTURE (3 LAYERS) → Drawer callout / section title
-- Phase 2: Post-Treatment & Synthetic Array (Outlet side) → Phase banner / top tag
-- Stage 3: Heat Sink 2 (Alloy Fan Cooling) → Cutaway S3 + drawer
-- ALLOY FAN COOLING → S3 callout; fan RPM tied to control
-- Stage 4: 6-Layer Synthetic Array → Cutaway S4 exploded stack
-- PRECISION GRADED PORE STRUCTURE → S4 subtitle + drawer
-- Layer 1: Coarse Synthetic Mesh — Large Dust Removal → S4 + per-layer capture
-- Layer 2: Mid-Size Microfiber Filter — PM10 Filtration → S4 + capture
-- Layer 3: Electrostatic Filter — PM2.5 Capture → S4 + electrostatic boost
-- Layer 4: Nanofiber Barrier Structure — Fine Particle Capture → S4 + capture
-- Layer 5: Activated Carbon + Zeolite Composite → S4 + VOC capture
-- Layer 6: PTFE Protective Membrane → S4 final barrier
-- Quick-Disconnect Coupling → SVG outlet ring
-- Purified Air Outlet (Cleaned, Cooled) → Pipeline top tag + SVG outlet
-- Legend & Summary / SYSTEM ADVANTAGES → Legend panel + footer
+Health check: `GET /api/health`
 
 ## Features
 
-- SVG metallic cutaway: docking rings, oil coil + canisters, 3 charcoal strata, spinning alloy fan, exploded 6-layer stack, outlet coupling
-- Running animation: hot orange particulates shrink/disappear through filters; red to blue thermal wash; oil shimmer; fan RPM; flow chevrons
-- Per-layer live contribution: Large dust / PM10 / PM2.5 / Fine / VOC-odor capture %, pore class, service life %
-- Time-based filter loading; Service Mode undocks modules; Replace Cartridges resets life
-- Keyboard Space = Start/Pause
-- Industrial dark theme, AeroPure branding, diagram lightbox + split view
+### 1. Awe-inspiring 3D simulation (primary view)
+
+- `@react-three/fiber` + `@react-three/drei` + `three`
+- Cutaway metallic housing, self-sealing docking, oil coil + canisters, 3 charcoal strata, spinning alloy fan, exploded/expandable 6-layer synthetic stack, quick-disconnect outlet
+- Animated particles (hot dirty → cool clean), thermal glow, fan RPM tied to controls, orbit/zoom, stage click-to-focus
+- Lazy-loaded WebGL chunk; graceful **2D SVG cutaway fallback** if WebGL fails
+- Keyboard: **Space** start/pause · **1–4** focus stages
+
+### 2. Deep-tech knowledge agents
+
+| Agent | Role |
+|-------|------|
+| **ThermoAgent** | Heat sinks, oil cooling, backpressure, ΔT |
+| **NanoFilterAgent** | Charcoal + synthetic layer science, PM10/PM2.5 |
+| **ComplianceAgent** | PCB/PUC, SDG 3/9/11, TRL 3, India retrofit |
+| **BusinessAgent** | USP, COGS ₹5,700–₹8,700, revenue, competitive, channels |
+| **ServiceAgent** | Modular swap, docking, cartridges, IoT alerts |
+
+- Knowledge encoded in `src/lib/knowledgeBase.ts` (client) and `api/_lib/knowledge.js` (server)
+- `POST /api/agents` `{ agentId, message, simSnapshot? }` → grounded markdown + cited deck sections
+- Client fallback if API unavailable; never invents conflicting specs
+
+### 3. Production UI
+
+- Dark industrial glassmorphism, AeroPure branding, desktop-first responsive
+- Tabs: **Simulation** \| **Product Intelligence** \| **Service Mode**
+- Live metrics: inlet/outlet °C, ΔT, PM classes, efficiency %, ΔP, fan RPM, filter load, oil coolant, API/Client badge
+- Knowledge agents drawer with suggested prompts + agent switcher
+
+### 4. Backend (Vercel)
+
+| Route | Purpose |
+|-------|---------|
+| `GET/POST /api/sim-state` | Scenario defaults + outlet metrics validation |
+| `GET/POST /api/agents` | Deck-grounded agent answers |
+| `GET /api/health` | Liveness |
+
+Local Vite mirrors these via `vite.config.ts` middleware.
+
+## Exact stage / layer names (deck)
+
+**Phase 1 — Thermal & Nanofiltration**
+
+1. Heat Sink 1 (Lubricant Oil Cooling) — circulating replaceable lubricant oil  
+2. 3-Layer Charcoal Nano-Material Filter  
+   - L1 Coarse Carbon (large pore macro/VOC)  
+   - L2 Carbon+Zeolite (medium molecular sieving)  
+   - L3 Nano Membrane (fine barrier)
+
+**Phase 2 — Post-Treatment & Synthetic Array**
+
+3. Heat Sink 2 (Alloy Fan Cooling)  
+4. 6-Layer Synthetic Array  
+   - L1 Coarse Synthetic Mesh (dust)  
+   - L2 Mid Microfiber (PM10)  
+   - L3 Electrostatic (PM2.5)  
+   - L4 Nanofiber Barrier (sub-micron)  
+   - L5 Activated Carbon+Zeolite (odor/gas)  
+   - L6 PTFE Protective Membrane  
+
+Ports: Self-Sealing Docking Mechanism · Quick-Disconnect Coupling
 
 ## Project layout
 
-- src/App.tsx — shell, sim loop, keyboard, service reset
-- src/components/CutawayViz.tsx — SVG engineering cutaway
-- src/components/ParticleCanvas.tsx — particle + thermal animation
-- src/components/Pipeline.tsx — chassis composing canvas + cutaway
-- src/components/DetailDrawer.tsx — stage + per-layer metrics
-- src/components/Header.tsx, Controls.tsx, MetricsPanel.tsx, LegendPanel.tsx, ReferencePanel.tsx
-- src/lib/stages.ts — diagram-accurate stage/layer defs
-- src/lib/physics.ts — educational cooling/filtration/clog model
-- public/concept-diagram.png — engineering diagram
-- MODEL.md — physics assumptions
+```
+api/
+  agents.js          # knowledge agents endpoint
+  sim-state.js       # sim validation
+  health.js
+  _lib/knowledge.js  # server knowledge mirror
+src/
+  App.tsx            # shell, tabs, keyboard
+  components/
+    scene3d/         # R3F module + particles + viewport
+    AgentsPanel.tsx
+    ProductIntelligence.tsx
+    ServiceModeView.tsx
+    …                # controls, metrics, 2D cutaway fallback
+  lib/
+    knowledgeBase.ts # deck RAG source of truth (client)
+    stages.ts physics.ts simEngine.ts
+public/
+  concept-diagram.png
+  product-deck.pdf
+  product-deck.txt
+```
 
-## Model assumptions
+## How to try
 
-See MODEL.md. Summary: oil + fan dominate delta-T; charcoal then synthetic graded pores dominate filtration; electrostatic boosts PM2.5; PTFE final barrier; pressure drop rises with contamination + loading.
+1. `npm run dev` → open Simulation tab — orbit the 3D module, raise fan speed, watch particles cool.
+2. Open **Knowledge Agents** → switch to BusinessAgent → ask “What is the COGS range?” (expects ₹5,700–₹8,700 + cited Cost Structure).
+3. Product Intelligence tab for problem / USP / competitive / SDG cards.
+4. Service Mode tab → Enter Service Mode → Replace Cartridges.
+
+## Model notes
+
+See `MODEL.md`. Educational physics only — not a certified engineering model.
+
+## Scripts
+
+- `dev` — Vite + local `/api/*`
+- `build` — typecheck + production bundle
+- `preview` — serve `dist/`
+- `lint` — oxlint
