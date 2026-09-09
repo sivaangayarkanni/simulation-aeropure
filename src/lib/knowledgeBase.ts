@@ -298,7 +298,7 @@ export const AGENTS: AgentDef[] = [
     role: 'Thermal & Flow Systems',
     specialty:
       'Heat Sink 1 lubricant oil cooling, Heat Sink 2 alloy fan, ΔT, backpressure, airflow',
-    accent: '#fb923c',
+    accent: '#f87171',
     suggestedPrompts: [
       'How do Heat Sink 1 and the lubricant oil loop reduce exhaust temperature?',
       'Why does AeroPure claim lower backpressure than static DPFs?',
@@ -312,7 +312,7 @@ export const AGENTS: AgentDef[] = [
     role: 'Filtration Science',
     specialty:
       'Charcoal + synthetic layers, pore classes, PM10/PM2.5, VOC, PTFE',
-    accent: '#2dd4bf',
+    accent: '#3b82f6',
     suggestedPrompts: [
       'Explain the 3 charcoal layers and their pore classes.',
       'How does the 6-layer synthetic array capture PM10 and PM2.5?',
@@ -325,7 +325,7 @@ export const AGENTS: AgentDef[] = [
     name: 'ComplianceAgent',
     role: 'Norms & Policy',
     specialty: 'PCB/PUC, SDG 3/9/11, TRL 3, India retrofit & MSME Hackathon context',
-    accent: '#4ade80',
+    accent: '#60a5fa',
     suggestedPrompts: [
       'How does AeroPure support PCB and PUC compliance in India?',
       'Which SDGs and TRL does the deck claim?',
@@ -338,7 +338,7 @@ export const AGENTS: AgentDef[] = [
     name: 'BusinessAgent',
     role: 'Go-to-Market',
     specialty: 'USP, COGS ₹5,700–₹8,700, revenue, competitive table, channels, moat',
-    accent: '#c084fc',
+    accent: '#2563eb',
     suggestedPrompts: [
       'What is the COGS range and major cost buckets?',
       'List revenue streams and distribution channels.',
@@ -352,7 +352,7 @@ export const AGENTS: AgentDef[] = [
     role: 'Modular Service & IoT',
     specialty:
       'Self-sealing docking, quick-disconnect, cartridges, IoT alerts, hazard-free swaps',
-    accent: '#fbbf24',
+    accent: '#ef4444',
     suggestedPrompts: [
       'How do self-sealing docking and quick-disconnect enable modular swaps?',
       'What recurring cartridge and IoT offerings exist?',

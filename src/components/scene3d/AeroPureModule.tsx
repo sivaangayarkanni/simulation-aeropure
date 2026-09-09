@@ -22,9 +22,9 @@ interface Props {
 
 const metal = '#7a93a8';
 const metalDark = '#2a3d52';
-const teal = '#2dd4bf';
-const cyan = '#22d3ee';
-const amber = '#fb923c';
+const teal = '#3b82f6';
+const cyan = '#60a5fa';
+const amber = '#f87171';
 
 function HousingShell({
   serviceMode,
@@ -40,7 +40,7 @@ function HousingShell({
   // Solid: full opaque cylinder. Cutaway: open arc (~1.35π). X-ray: full transparent shell.
   const thetaLength = isSolid || isXray ? Math.PI * 2 : Math.PI * 1.28;
   const opacity = isSolid ? 0.96 : isXray ? 0.14 : 0.55;
-  const color = serviceMode ? '#1a4a42' : isXray ? '#3d6a7a' : metalDark;
+  const color = serviceMode ? '#1a1020' : isXray ? '#2a3a58' : metalDark;
 
   return (
     <group>
@@ -83,7 +83,7 @@ function HousingShell({
       {/* Phase divider ring */}
       <mesh position={[0.4, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <torusGeometry args={[1.05, 0.04, 12, 48]} />
-        <meshStandardMaterial color={cyan} emissive="#0e7490" emissiveIntensity={0.55} />
+        <meshStandardMaterial color={cyan} emissive="#1e40af" emissiveIntensity={0.55} />
       </mesh>
     </group>
   );
@@ -95,7 +95,7 @@ function Docking({ selected }: { selected: boolean }) {
       <mesh rotation={[0, 0, Math.PI / 2]}>
         <cylinderGeometry args={[0.55, 0.62, 0.35, 24]} />
         <meshStandardMaterial
-          color={selected ? '#4ade80' : '#6a8498'}
+          color={selected ? '#60a5fa' : '#6a8498'}
           metalness={0.9}
           roughness={0.25}
           emissive={selected ? '#1a5a30' : '#000'}
@@ -111,7 +111,7 @@ function Docking({ selected }: { selected: boolean }) {
         <cylinderGeometry args={[0.22, 0.22, 0.15, 16]} />
         <meshStandardMaterial
           color={amber}
-          emissive="#ea580c"
+          emissive="#dc2626"
           emissiveIntensity={0.7}
           transparent
           opacity={0.85}
@@ -130,7 +130,7 @@ function OutletCoupling({ selected }: { selected: boolean }) {
           color={selected ? cyan : '#7a9aaa'}
           metalness={0.9}
           roughness={0.25}
-          emissive={selected ? '#0e7490' : '#000'}
+          emissive={selected ? '#1e40af' : '#000'}
           emissiveIntensity={selected ? 0.45 : 0}
         />
       </mesh>
@@ -195,16 +195,16 @@ function OilHeatSink({
       {/* Oil canisters — clearly visible */}
       <mesh position={[0.25, 0.15, 0.25]} rotation={[0, 0, Math.PI / 2]}>
         <cylinderGeometry args={[0.22, 0.22, 0.9, 16]} />
-        <meshStandardMaterial color="#e8b03a" metalness={0.45} roughness={0.35} emissive="#b45309" emissiveIntensity={0.25} />
+        <meshStandardMaterial color="#ef4444" metalness={0.45} roughness={0.35} emissive="#991b1b" emissiveIntensity={0.25} />
       </mesh>
       <mesh position={[0.25, -0.2, -0.2]} rotation={[0, 0, Math.PI / 2]}>
         <cylinderGeometry args={[0.22, 0.22, 0.9, 16]} />
-        <meshStandardMaterial color="#d4a030" metalness={0.45} roughness={0.35} emissive="#92400e" emissiveIntensity={0.2} />
+        <meshStandardMaterial color="#dc2626" metalness={0.45} roughness={0.35} emissive="#7f1d1d" emissiveIntensity={0.2} />
       </mesh>
       <mesh ref={coilRef} geometry={tube}>
         <meshStandardMaterial
-          color="#f59e0b"
-          emissive="#ea580c"
+          color="#ef4444"
+          emissive="#dc2626"
           emissiveIntensity={0.4}
           metalness={0.4}
           roughness={0.3}
@@ -296,7 +296,7 @@ function AlloyFan({
           <mesh key={i} rotation={[0, (i / 7) * Math.PI * 2, 0]} position={[0.28, 0, 0]}>
             <boxGeometry args={[0.42, 0.06, 0.18]} />
             <meshStandardMaterial
-              color={selected ? '#a5f3fc' : '#e0f2fe'}
+              color={selected ? '#bfdbfe' : '#dbeafe'}
               metalness={0.95}
               roughness={0.18}
               emissive={selected ? cyan : '#000'}
@@ -360,7 +360,7 @@ function SyntheticArray({
       {selected && (
         <mesh>
           <boxGeometry args={[1.15, 1.7, 1.15]} />
-          <meshBasicMaterial color="#c084fc" wireframe transparent opacity={0.4} />
+          <meshBasicMaterial color="#3b82f6" wireframe transparent opacity={0.4} />
         </mesh>
       )}
     </group>
@@ -444,12 +444,12 @@ export function AeroPureModule({
       <pointLight
         position={[-4.2, 0.2, 0.5]}
         intensity={1.4 + glow * 2}
-        color="#f97316"
+        color="#ef4444"
         distance={4}
       />
-      <pointLight position={[4.2, 0.2, 0.5]} intensity={1.25} color="#22d3ee" distance={4} />
+      <pointLight position={[4.2, 0.2, 0.5]} intensity={1.25} color="#60a5fa" distance={4} />
       {/* Interior fill light so cutaway internals stay readable */}
-      <pointLight position={[0, 0.6, 1.2]} intensity={0.55} color="#99f6e4" distance={8} />
+      <pointLight position={[0, 0.6, 1.2]} intensity={0.55} color="#93c5fd" distance={8} />
 
       <StageHitBox position={[-2.2, 0, 0]} size={[2, 1.8, 1.8]} id="stage1" onSelect={onSelectStage} />
       <StageHitBox position={[-0.55, 0, 0]} size={[1.4, 1.6, 1.4]} id="stage2" onSelect={onSelectStage} />

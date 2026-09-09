@@ -136,20 +136,20 @@ export function ParticleMicroscope({
       // Background
       const g = ctx.createRadialGradient(w * 0.5, h * 0.5, 10, w * 0.5, h * 0.5, w * 0.7);
       if (tone === 'hot') {
-        g.addColorStop(0, 'rgba(120, 40, 10, 0.55)');
-        g.addColorStop(1, 'rgba(20, 12, 8, 0.9)');
+        g.addColorStop(0, 'rgba(153, 27, 27, 0.55)');
+        g.addColorStop(1, 'rgba(10, 5, 5, 0.9)');
       } else if (tone === 'cool') {
-        g.addColorStop(0, 'rgba(20, 80, 90, 0.5)');
-        g.addColorStop(1, 'rgba(8, 20, 32, 0.92)');
+        g.addColorStop(0, 'rgba(37, 99, 235, 0.45)');
+        g.addColorStop(1, 'rgba(5, 5, 8, 0.92)');
       } else {
-        g.addColorStop(0, 'rgba(40, 60, 70, 0.45)');
-        g.addColorStop(1, 'rgba(10, 22, 36, 0.9)');
+        g.addColorStop(0, 'rgba(30, 41, 59, 0.45)');
+        g.addColorStop(1, 'rgba(8, 8, 14, 0.9)');
       }
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, w, h);
 
       // Grid reticle
-      ctx.strokeStyle = 'rgba(45, 212, 191, 0.12)';
+      ctx.strokeStyle = 'rgba(59, 130, 246, 0.12)';
       ctx.lineWidth = 1;
       for (let x = 20; x < w; x += 28) {
         ctx.beginPath();
@@ -163,7 +163,7 @@ export function ParticleMicroscope({
         ctx.lineTo(w, y);
         ctx.stroke();
       }
-      ctx.strokeStyle = 'rgba(251, 191, 36, 0.25)';
+      ctx.strokeStyle = 'rgba(239, 68, 68, 0.25)';
       ctx.beginPath();
       ctx.arc(w / 2, h / 2, Math.min(w, h) * 0.32, 0, Math.PI * 2);
       ctx.stroke();

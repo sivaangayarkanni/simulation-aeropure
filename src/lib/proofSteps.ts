@@ -86,11 +86,11 @@ export const POLLUTANT_META: Record<
   PollutantKey,
   { label: string; short: string; color: string; unit: string }
 > = {
-  largeDust: { label: 'Large dust', short: 'Dust', color: '#fb923c', unit: 'µg/m³' },
-  pm10: { label: 'PM10', short: 'PM10', color: '#fbbf24', unit: 'µg/m³' },
-  pm25: { label: 'PM2.5', short: 'PM2.5', color: '#a3e635', unit: 'µg/m³' },
-  fine: { label: 'Fine', short: 'Fine', color: '#22d3ee', unit: 'µg/m³' },
-  odorIndex: { label: 'Odor / VOC', short: 'Odor', color: '#c084fc', unit: 'idx' },
+  largeDust: { label: 'Large dust', short: 'Dust', color: '#f87171', unit: 'µg/m³' },
+  pm10: { label: 'PM10', short: 'PM10', color: '#ef4444', unit: 'µg/m³' },
+  pm25: { label: 'PM2.5', short: 'PM2.5', color: '#3b82f6', unit: 'µg/m³' },
+  fine: { label: 'Fine', short: 'Fine', color: '#60a5fa', unit: 'µg/m³' },
+  odorIndex: { label: 'Odor / VOC', short: 'Odor', color: '#818cf8', unit: 'idx' },
 };
 
 export const PROOF_STEPS: ProofStepDef[] = [

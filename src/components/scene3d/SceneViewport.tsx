@@ -65,9 +65,9 @@ function StageLabels({ selected }: { selected: string | null }) {
               fontSize: 11,
               padding: '3px 8px',
               borderRadius: 6,
-              background: selected === l.id ? 'rgba(45,212,191,0.4)' : 'rgba(10,24,40,0.7)',
-              border: '1px solid rgba(45,212,191,0.4)',
-              color: '#e2f0f7',
+              background: selected === l.id ? 'rgba(59,130,246,0.4)' : 'rgba(8,8,14,0.75)',
+              border: '1px solid rgba(59,130,246,0.4)',
+              color: '#f1f5f9',
               backdropFilter: 'blur(6px)',
             }}
           >
@@ -76,12 +76,12 @@ function StageLabels({ selected }: { selected: string | null }) {
         </Html>
       ))}
       <Html position={[-4.5, 1.0, 0]} center distanceFactor={10} style={{ pointerEvents: 'none' }}>
-        <div style={{ fontSize: 10, color: '#fb923c', whiteSpace: 'nowrap', fontWeight: 600 }}>
+        <div style={{ fontSize: 10, color: '#f87171', whiteSpace: 'nowrap', fontWeight: 600 }}>
           Inlet · Self-Sealing Dock
         </div>
       </Html>
       <Html position={[4.5, 1.0, 0]} center distanceFactor={10} style={{ pointerEvents: 'none' }}>
-        <div style={{ fontSize: 10, color: '#22d3ee', whiteSpace: 'nowrap', fontWeight: 600 }}>
+        <div style={{ fontSize: 10, color: '#60a5fa', whiteSpace: 'nowrap', fontWeight: 600 }}>
           Outlet · Quick-Disconnect
         </div>
       </Html>
@@ -109,12 +109,12 @@ function SceneInner(props: Props) {
   return (
     <>
       <PerspectiveCamera makeDefault position={[0.4, 2.8, 7.2]} fov={42} />
-      <color attach="background" args={['#0a1628']} />
-      <fog attach="fog" args={['#0a1628', 11, 24]} />
+      <color attach="background" args={['#050508']} />
+      <fog attach="fog" args={['#050508', 11, 24]} />
       <ambientLight intensity={0.55} />
       <directionalLight position={[4, 8, 5]} intensity={1.4} />
-      <directionalLight position={[-5, 3, -3]} intensity={0.45} color="#67e8f9" />
-      <hemisphereLight args={['#a5f3fc', '#1a2838', 0.4]} />
+      <directionalLight position={[-5, 3, -3]} intensity={0.45} color="#93c5fd" />
+      <hemisphereLight args={['#bfdbfe', '#0c0c14', 0.4]} />
       <AeroPureModule
         running={props.controls.status === 'running'}
         fanRpm={props.metrics.fanRpm}
@@ -189,7 +189,7 @@ export function SceneViewport(props: Props) {
           dpr={[1, 1.75]}
           gl={{ antialias: true, powerPreference: 'high-performance', alpha: false }}
           onCreated={({ gl }) => {
-            gl.setClearColor('#0a1628');
+            gl.setClearColor('#050508');
           }}
         >
           <Suspense fallback={null}>

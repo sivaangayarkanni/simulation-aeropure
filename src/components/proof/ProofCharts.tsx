@@ -104,7 +104,7 @@ function ContributionBars({ contributions }: { contributions: LayerContribution[
       <div className="contrib-legend">
         {contributions.map((c) => (
           <span key={c.id} className="contrib-pill">
-            <i style={{ background: c.color || '#2dd4bf' }} />
+            <i style={{ background: c.color || '#3b82f6' }} />
             {c.id.toUpperCase()}
           </span>
         ))}
@@ -157,15 +157,15 @@ function CumulativeCurve({
             </text>
           </g>
         ))}
-        <path d={area} fill="rgba(45, 212, 191, 0.15)" />
-        <path d={line} fill="none" stroke="#2dd4bf" strokeWidth="2.5" />
+        <path d={area} fill="rgba(59, 130, 246, 0.15)" />
+        <path d={line} fill="none" stroke="#3b82f6" strokeWidth="2.5" />
         {curve.map((p, i) => (
           <g key={p.label}>
             <circle
               cx={xAt(i)}
               cy={yAt(p.efficiencyPct)}
               r={i === activeIndex ? 6 : 3.5}
-              fill={i === activeIndex ? '#fbbf24' : '#22d3ee'}
+              fill={i === activeIndex ? '#ef4444' : '#60a5fa'}
               stroke={i === activeIndex ? '#fff' : 'none'}
               strokeWidth={1.5}
             />
@@ -214,9 +214,9 @@ function TempProfile({ profile }: { profile: ProofPackData['tempProfile'] }) {
       <svg viewBox={`0 0 ${W} ${H}`} className="proof-svg" role="img" aria-label="Temperature profile">
         <defs>
           <linearGradient id="tempStroke" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#f97316" />
-            <stop offset="50%" stopColor="#fbbf24" />
-            <stop offset="100%" stopColor="#22d3ee" />
+            <stop offset="0%" stopColor="#ef4444" />
+            <stop offset="50%" stopColor="#ef4444" />
+            <stop offset="100%" stopColor="#60a5fa" />
           </linearGradient>
         </defs>
         {profile.map((p, i) => (
@@ -231,7 +231,7 @@ function TempProfile({ profile }: { profile: ProofPackData['tempProfile'] }) {
             <text x={xAt(i)} y={H - 10} textAnchor="middle" className="svg-muted">
               {p.label}
             </text>
-            <circle cx={xAt(i)} cy={yAt(p.tempC)} r={5} fill="#fb923c" stroke="#fff" strokeWidth={1} />
+            <circle cx={xAt(i)} cy={yAt(p.tempC)} r={5} fill="#f87171" stroke="#fff" strokeWidth={1} />
             <text x={xAt(i)} y={yAt(p.tempC) - 10} textAnchor="middle" className="svg-label-hot">
               {p.tempC.toFixed(0)}°
             </text>

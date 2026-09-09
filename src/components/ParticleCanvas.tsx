@@ -156,7 +156,7 @@ export function ParticleCanvas({
           const x = oilX0 + t * (oilX1 - oilX0);
           const amp = 6 + Math.sin(shimmer * Math.PI * 2 + i) * 4;
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(255,${120 + i * 12},40,${0.12 + (1 - t) * 0.18})`;
+          ctx.strokeStyle = `rgba(239,${68 + i * 8},68,${0.12 + (1 - t) * 0.18})`;
           ctx.lineWidth = 1.5;
           ctx.moveTo(x, height * 0.28);
           for (let y = height * 0.28; y < height * 0.72; y += 8) {
@@ -174,7 +174,7 @@ export function ParticleCanvas({
         for (let i = 0; i < 22; i++) {
           const x = ((i / 22 + phase) % 1) * width * 0.9 + width * 0.05;
           const heat = heatAt(x / width, m);
-          ctx.strokeStyle = `rgba(${Math.round(220 * heat + 50 * (1 - heat))},${Math.round(80 + 80 * (1 - heat))},${Math.round(40 + 200 * (1 - heat))},0.38)`;
+          ctx.strokeStyle = `rgba(${Math.round(239 * heat + 59 * (1 - heat))},${Math.round(68 * heat + 130 * (1 - heat))},${Math.round(68 * heat + 246 * (1 - heat))},0.38)`;
           ctx.lineWidth = 2;
           const y = height * 0.5;
           ctx.beginPath();
@@ -251,10 +251,10 @@ export function ParticleCanvas({
 
         const heat = p.heat;
         const colors: Record<Particle['kind'], string> = {
-          coarse: `rgba(${Math.round(200 + 40 * heat)},${Math.round(40 + 40 * (1 - heat))},${Math.round(30 + 80 * (1 - heat))},${p.alpha})`,
-          pm10: `rgba(${Math.round(210 + 30 * heat)},${Math.round(100 + 40 * (1 - heat))},${Math.round(40 + 100 * (1 - heat))},${p.alpha})`,
-          pm25: `rgba(${Math.round(220 + 20 * heat)},${Math.round(160 + 20 * (1 - heat))},${Math.round(60 + 120 * (1 - heat))},${p.alpha * 0.9})`,
-          fine: `rgba(${Math.round(160 + 40 * (1 - heat))},${Math.round(190 + 20 * (1 - heat))},${Math.round(200 + 40 * (1 - heat))},${p.alpha * 0.75})`,
+          coarse: `rgba(${Math.round(180 + 59 * heat)},${Math.round(40 + 50 * (1 - heat))},${Math.round(40 + 140 * (1 - heat))},${p.alpha})`,
+          pm10: `rgba(${Math.round(200 + 39 * heat)},${Math.round(60 + 70 * (1 - heat))},${Math.round(50 + 160 * (1 - heat))},${p.alpha})`,
+          pm25: `rgba(${Math.round(160 + 40 * heat)},${Math.round(90 + 60 * (1 - heat))},${Math.round(80 + 166 * (1 - heat))},${p.alpha * 0.9})`,
+          fine: `rgba(${Math.round(80 + 40 * (1 - heat))},${Math.round(130 + 35 * (1 - heat))},${Math.round(200 + 46 * (1 - heat))},${p.alpha * 0.75})`,
         };
         ctx.beginPath();
         ctx.fillStyle = colors[p.kind];

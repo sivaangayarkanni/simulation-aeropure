@@ -37,9 +37,9 @@ export function ProofSchematic({ focusId, snap, fanRpm, oilTempC }: Props) {
       <svg viewBox="0 0 880 150" className="proof-schematic-svg" role="img" aria-label="Stage focus schematic">
         <defs>
           <linearGradient id="proofDuct" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="rgba(249,115,22,0.45)" />
-            <stop offset="40%" stopColor="rgba(251,191,36,0.25)" />
-            <stop offset="100%" stopColor="rgba(34,211,238,0.45)" />
+            <stop offset="0%" stopColor="rgba(239,68,68,0.45)" />
+            <stop offset="40%" stopColor="rgba(239,68,68,0.25)" />
+            <stop offset="100%" stopColor="rgba(96,165,250,0.45)" />
           </linearGradient>
           <filter id="proofGlow">
             <feGaussianBlur stdDeviation="3.5" result="b" />
@@ -51,7 +51,7 @@ export function ProofSchematic({ focusId, snap, fanRpm, oilTempC }: Props) {
         </defs>
 
         {/* Housing */}
-        <rect x="12" y="28" width="856" height="94" rx="14" fill="rgba(14,36,54,0.85)" stroke="#2dd4bf" strokeWidth="1.5" />
+        <rect x="12" y="28" width="856" height="94" rx="14" fill="rgba(10,10,16,0.85)" stroke="#3b82f6" strokeWidth="1.5" />
         <rect x="40" y="58" width="800" height="34" rx="8" fill="url(#proofDuct)" opacity="0.55" />
 
         {SEGMENTS.map((seg) => {
@@ -59,15 +59,15 @@ export function ProofSchematic({ focusId, snap, fanRpm, oilTempC }: Props) {
           const isCharcoal = seg.id.startsWith('c');
           const isSynth = seg.id.startsWith('s') && seg.id !== 'stage1' && seg.id !== 'stage3';
           const fill = on
-            ? 'rgba(251, 191, 36, 0.35)'
+            ? 'rgba(239, 68, 68, 0.35)'
             : isCharcoal
               ? 'rgba(40,40,40,0.85)'
               : isSynth
                 ? 'rgba(45, 100, 110, 0.45)'
                 : seg.id === 'stage1'
-                  ? 'rgba(180, 70, 20, 0.35)'
+                  ? 'rgba(153, 27, 27, 0.35)'
                   : seg.id === 'stage3'
-                    ? 'rgba(34, 211, 238, 0.28)'
+                    ? 'rgba(96, 165, 250, 0.28)'
                     : 'rgba(20, 40, 55, 0.5)';
           return (
             <g key={seg.id} filter={on ? 'url(#proofGlow)' : undefined}>
@@ -78,14 +78,14 @@ export function ProofSchematic({ focusId, snap, fanRpm, oilTempC }: Props) {
                 height={66}
                 rx={8}
                 fill={fill}
-                stroke={on ? '#fbbf24' : 'rgba(45,212,191,0.35)'}
+                stroke={on ? '#ef4444' : 'rgba(59,130,246,0.35)'}
                 strokeWidth={on ? 2.5 : 1}
               />
               <text
                 x={seg.x + seg.w / 2}
                 y={70}
                 textAnchor="middle"
-                fill={on ? '#fef3c7' : '#e2f0f7'}
+                fill={on ? '#fee2e2' : '#f1f5f9'}
                 fontSize={on ? 11 : 9}
                 fontWeight={700}
               >
@@ -96,7 +96,7 @@ export function ProofSchematic({ focusId, snap, fanRpm, oilTempC }: Props) {
                   x={seg.x + seg.w / 2}
                   y={86}
                   textAnchor="middle"
-                  fill={on ? '#fbbf24' : '#7a9bb0'}
+                  fill={on ? '#ef4444' : '#94a3b8'}
                   fontSize={8}
                 >
                   {seg.sub}
@@ -109,7 +109,7 @@ export function ProofSchematic({ focusId, snap, fanRpm, oilTempC }: Props) {
         {/* Flow arrow under active */}
         <polygon
           points={`${active.x + active.w / 2 - 8},128 ${active.x + active.w / 2 + 8},128 ${active.x + active.w / 2},138`}
-          fill="#fbbf24"
+          fill="#ef4444"
         />
       </svg>
 

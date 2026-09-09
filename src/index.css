@@ -1,28 +1,37 @@
 :root {
-  /* Production palette — deep navy/slate + teal/cyan + amber */
-  --ap-bg-deep: #0a1628;
-  --ap-bg-mid: #0f1e36;
-  --ap-bg-slate: #132640;
-  --ap-text: #e2f0f7;
-  --ap-text-muted: #7a9bb0;
-  --ap-text-dim: #5a7a90;
+  /* Production palette — deep black + red + blue */
+  --ap-bg-deep: #050508;
+  --ap-bg-mid: #0a0a0f;
+  --ap-bg-slate: #0c0c14;
+  --ap-text: #f1f5f9;
+  --ap-text-muted: #94a3b8;
+  --ap-text-dim: #64748b;
 
-  --ap-teal: #2dd4bf;
-  --ap-teal-deep: #14b8a6;
-  --ap-cyan: #22d3ee;
-  --ap-cyan-soft: #67e8f9;
+  /* Cool / clean / primary actions (blue) — kept --ap-teal/--ap-cyan aliases for cohesion */
+  --ap-teal: #3b82f6;
+  --ap-teal-deep: #2563eb;
+  --ap-cyan: #60a5fa;
+  --ap-cyan-soft: #93c5fd;
+  --ap-blue: #3b82f6;
+  --ap-blue-deep: #1d4ed8;
+  --ap-blue-soft: #60a5fa;
 
-  --ap-amber: #fbbf24;
-  --ap-orange: #fb923c;
-  --ap-hot: #f97316;
-  --ap-hot-deep: #ea580c;
+  /* Hot / danger / exhaust / service (red) — amber/orange aliases remapped */
+  --ap-amber: #ef4444;
+  --ap-orange: #f87171;
+  --ap-hot: #ef4444;
+  --ap-hot-deep: #dc2626;
+  --ap-red: #ef4444;
+  --ap-red-deep: #991b1b;
+  --ap-red-soft: #f87171;
 
-  --ap-green: #4ade80;
-  --ap-green-soft: #34d399;
+  /* Efficiency / success → bright blue for cohesion */
+  --ap-green: #60a5fa;
+  --ap-green-soft: #3b82f6;
 
-  --ap-glass: rgba(15, 35, 55, 0.55);
-  --ap-glass-border: rgba(45, 212, 191, 0.28);
-  --ap-glass-glow: 0 0 24px rgba(45, 212, 191, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --ap-glass: rgba(10, 10, 16, 0.55);
+  --ap-glass-border: rgba(59, 130, 246, 0.28);
+  --ap-glass-glow: 0 0 24px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 
   font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.45;

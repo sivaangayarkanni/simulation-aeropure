@@ -49,29 +49,29 @@ export function CutawayViz({
       <defs>
         <linearGradient id="housingMetal" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#3d5a6e" stopOpacity="0.55" />
-          <stop offset="35%" stopColor="#1e3548" stopOpacity="0.45" />
+          <stop offset="35%" stopColor="#12121a" stopOpacity="0.45" />
           <stop offset="70%" stopColor="#142838" stopOpacity="0.5" />
           <stop offset="100%" stopColor="#0c1a28" stopOpacity="0.7" />
         </linearGradient>
         <linearGradient id="ductHotCold" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="rgba(249,115,22,0.38)" />
+          <stop offset="0%" stopColor="rgba(239,68,68,0.38)" />
           <stop offset="35%" stopColor="rgba(251,146,60,0.22)" />
-          <stop offset="65%" stopColor="rgba(45,212,191,0.2)" />
-          <stop offset="100%" stopColor="rgba(34,211,238,0.38)" />
+          <stop offset="65%" stopColor="rgba(59,130,246,0.2)" />
+          <stop offset="100%" stopColor="rgba(96,165,250,0.38)" />
         </linearGradient>
         <linearGradient id="oilGlow" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#fb923c" />
-          <stop offset="100%" stopColor="#c2410c" />
+          <stop offset="0%" stopColor="#f87171" />
+          <stop offset="100%" stopColor="#991b1b" />
         </linearGradient>
         <linearGradient id="fanMetal" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#e0f2fe" />
+          <stop offset="0%" stopColor="#dbeafe" />
           <stop offset="50%" stopColor="#7dd3fc" />
-          <stop offset="100%" stopColor="#0e7490" />
+          <stop offset="100%" stopColor="#1e40af" />
         </linearGradient>
         <linearGradient id="flowStroke" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#f97316" />
-          <stop offset="50%" stopColor="#fbbf24" />
-          <stop offset="100%" stopColor="#22d3ee" />
+          <stop offset="0%" stopColor="#ef4444" />
+          <stop offset="50%" stopColor="#ef4444" />
+          <stop offset="100%" stopColor="#60a5fa" />
         </linearGradient>
         <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3" result="b" />
@@ -93,7 +93,7 @@ export function CutawayViz({
         height="224"
         rx="18"
         fill="url(#housingMetal)"
-        stroke="#2dd4bf"
+        stroke="#3b82f6"
         strokeWidth="2.5"
         opacity="0.92"
       />
@@ -101,12 +101,12 @@ export function CutawayViz({
       <path
         d="M90 48 L1010 48"
         fill="none"
-        stroke="#5eead4"
+        stroke="#60a5fa"
         strokeWidth="3"
         strokeDasharray="14 8"
         opacity="0.7"
       />
-      <text x="550" y="44" textAnchor="middle" className="svg-label" style={{ fill: '#5eead4', fontSize: 8, fontWeight: 700 }}>
+      <text x="550" y="44" textAnchor="middle" className="svg-label" style={{ fill: '#60a5fa', fontSize: 8, fontWeight: 700 }}>
         CUTAWAY VIEW — internals exposed
       </text>
       <rect
@@ -116,7 +116,7 @@ export function CutawayViz({
         height="200"
         rx="12"
         fill="url(#ductHotCold)"
-        stroke="rgba(45,212,191,0.35)"
+        stroke="rgba(59,130,246,0.35)"
         strokeWidth="1"
       />
 
@@ -132,7 +132,7 @@ export function CutawayViz({
       />
       {flowXs.map((x, i) => {
         const t = i / (flowXs.length - 1);
-        const fill = t < 0.4 ? '#f97316' : t < 0.7 ? '#fbbf24' : '#22d3ee';
+        const fill = t < 0.4 ? '#ef4444' : t < 0.7 ? '#ef4444' : '#60a5fa';
         const phase = running ? (oilFlowPhase + i * 0.08) % 1 : 0.5;
         return (
           <polygon
@@ -152,7 +152,7 @@ export function CutawayViz({
         <text x="315" y="41" textAnchor="middle" className="svg-label phase">
           Phase 1: Thermal &amp; Nanofiltration Module (Inlet side)
         </text>
-        <rect x="560" y="28" width="450" height="18" rx="4" fill="rgba(34,211,238,0.12)" stroke="rgba(34,211,238,0.4)" />
+        <rect x="560" y="28" width="450" height="18" rx="4" fill="rgba(96,165,250,0.12)" stroke="rgba(96,165,250,0.4)" />
         <text x="785" y="41" textAnchor="middle" className="svg-label phase">
           Phase 2: Post-Treatment &amp; Synthetic Array (Outlet side)
         </text>
@@ -168,7 +168,7 @@ export function CutawayViz({
             <polygon
               key={i}
               points="8,110 28,120 8,130"
-              fill="#f97316"
+              fill="#ef4444"
               opacity={running ? 0.55 + (i % 2) * 0.25 : 0.4}
               transform={`translate(0,${i * 28})`}
               className={running ? 'flow-arrow-hot' : undefined}
@@ -180,11 +180,11 @@ export function CutawayViz({
           Exhaust Inlet
         </text>
         <g transform="translate(42,100)">
-          <ellipse cx="28" cy="60" rx="22" ry="58" fill="#1e3548" stroke="#fb923c" strokeWidth="3" />
+          <ellipse cx="28" cy="60" rx="22" ry="58" fill="#12121a" stroke="#f87171" strokeWidth="3" />
           <ellipse cx="28" cy="60" rx="14" ry="42" fill="#0c1a28" stroke="#9a6a40" strokeWidth="2" />
-          <ellipse cx="28" cy="60" rx="8" ry="28" fill="rgba(249,115,22,0.5)" />
+          <ellipse cx="28" cy="60" rx="8" ry="28" fill="rgba(239,68,68,0.5)" />
           {[0, 1, 2, 3].map((i) => (
-            <circle key={i} cx="28" cy={18 + i * 28} r="3" fill="#fcd34d" />
+            <circle key={i} cx="28" cy={18 + i * 28} r="3" fill="#f87171" />
           ))}
         </g>
         <text x="55" y="278" textAnchor="middle" className="svg-label dock">
@@ -206,8 +206,8 @@ export function CutawayViz({
           width="200"
           height="180"
           rx="10"
-          fill={stageSelected('stage1') ? 'rgba(45,212,191,0.12)' : 'rgba(0,0,0,0.22)'}
-          stroke={stageSelected('stage1') ? '#2dd4bf' : 'rgba(45,212,191,0.4)'}
+          fill={stageSelected('stage1') ? 'rgba(59,130,246,0.12)' : 'rgba(0,0,0,0.22)'}
+          stroke={stageSelected('stage1') ? '#3b82f6' : 'rgba(59,130,246,0.4)'}
           strokeWidth={stageSelected('stage1') ? 2.5 : 1.5}
         />
         <text x="205" y="88" textAnchor="middle" className="svg-label stage-title">
@@ -222,7 +222,7 @@ export function CutawayViz({
               height="22"
               rx="6"
               fill="url(#oilGlow)"
-              stroke="#fb923c"
+              stroke="#f87171"
               strokeWidth="1"
               className={running ? 'oil-shimmer' : undefined}
             />
@@ -236,7 +236,7 @@ export function CutawayViz({
         <path
           d="M145 150 C160 120, 180 120, 195 150 S230 180, 245 150 S280 120, 295 150"
           fill="none"
-          stroke="#fbbf24"
+          stroke="#ef4444"
           strokeWidth="5"
           strokeLinecap="round"
           filter="url(#softGlow)"
@@ -244,7 +244,7 @@ export function CutawayViz({
         <path
           d="M145 165 C160 140, 180 140, 195 165 S230 190, 245 165 S280 140, 295 165"
           fill="none"
-          stroke="#ea580c"
+          stroke="#dc2626"
           strokeWidth="3.5"
           strokeLinecap="round"
         />
@@ -260,7 +260,7 @@ export function CutawayViz({
                 cx={x}
                 cy={y}
                 r={3.5 + (i % 2)}
-                fill="#fb923c"
+                fill="#f87171"
                 opacity={0.55 + 0.35 * Math.sin(t * Math.PI)}
                 filter="url(#softGlow)"
               />
@@ -293,7 +293,7 @@ export function CutawayViz({
             height="22"
             rx="6"
             fill="url(#oilGlow)"
-            stroke="#fb923c"
+            stroke="#f87171"
             strokeWidth="1"
             className={running ? 'oil-shimmer' : undefined}
             style={{ animationDelay: '0.4s' }}
@@ -321,8 +321,8 @@ export function CutawayViz({
           width="200"
           height="180"
           rx="10"
-          fill={stageSelected('stage2') ? 'rgba(45,212,191,0.12)' : 'rgba(0,0,0,0.22)'}
-          stroke={stageSelected('stage2') ? '#2dd4bf' : 'rgba(45,212,191,0.4)'}
+          fill={stageSelected('stage2') ? 'rgba(59,130,246,0.12)' : 'rgba(0,0,0,0.22)'}
+          stroke={stageSelected('stage2') ? '#3b82f6' : 'rgba(59,130,246,0.4)'}
           strokeWidth={stageSelected('stage2') ? 2.5 : 1.5}
         />
         <text x="420" y="88" textAnchor="middle" className="svg-label stage-title">
@@ -344,7 +344,7 @@ export function CutawayViz({
               height="110"
               rx="4"
               fill={layer.fill}
-              stroke="rgba(45,212,191,0.35)"
+              stroke="rgba(59,130,246,0.35)"
               strokeWidth="1.5"
             />
             {Array.from({ length: 12 - i * 3 }).map((_, j) => (
@@ -376,35 +376,35 @@ export function CutawayViz({
           width="200"
           height="180"
           rx="10"
-          fill={stageSelected('stage3') ? 'rgba(45,212,191,0.12)' : 'rgba(0,0,0,0.22)'}
-          stroke={stageSelected('stage3') ? '#2dd4bf' : 'rgba(45,212,191,0.4)'}
+          fill={stageSelected('stage3') ? 'rgba(59,130,246,0.12)' : 'rgba(0,0,0,0.22)'}
+          stroke={stageSelected('stage3') ? '#3b82f6' : 'rgba(59,130,246,0.4)'}
           strokeWidth={stageSelected('stage3') ? 2.5 : 1.5}
         />
         <text x="635" y="88" textAnchor="middle" className="svg-label stage-title">
           Stage 3: Heat Sink 2 (Alloy Fan Cooling)
         </text>
         <g transform={`translate(635,165)`}>
-          <circle r="58" fill="#122838" stroke="#22d3ee" strokeWidth="3" />
-          <circle r="52" fill="rgba(34,211,238,0.12)" stroke="#0e7490" strokeWidth="1" />
+          <circle r="58" fill="#0a0a12" stroke="#60a5fa" strokeWidth="3" />
+          <circle r="52" fill="rgba(96,165,250,0.12)" stroke="#1e40af" strokeWidth="1" />
           <g transform={`rotate(${fanAngle})`}>
             {Array.from({ length: 8 }).map((_, i) => (
               <path
                 key={i}
                 d="M0,-8 Q18,-28 8,-48 Q0,-52 -8,-48 Q-4,-28 0,-8"
                 fill="url(#fanMetal)"
-                stroke="#a5f3fc"
+                stroke="#bfdbfe"
                 strokeWidth="0.8"
                 transform={`rotate(${i * 45})`}
               />
             ))}
           </g>
-          <circle r="12" fill="#e0f2fe" stroke="#0e7490" strokeWidth="2" />
+          <circle r="12" fill="#dbeafe" stroke="#1e40af" strokeWidth="2" />
           <circle r="4" fill="#164e63" />
           {running && (
             <circle
               r="56"
               fill="none"
-              stroke="rgba(34,211,238,0.35)"
+              stroke="rgba(96,165,250,0.35)"
               strokeWidth="2"
               strokeDasharray="6 10"
               className="fan-spin-ring"
@@ -434,8 +434,8 @@ export function CutawayViz({
           width="200"
           height="180"
           rx="10"
-          fill={stageSelected('stage4') ? 'rgba(45,212,191,0.12)' : 'rgba(0,0,0,0.22)'}
-          stroke={stageSelected('stage4') ? '#2dd4bf' : 'rgba(45,212,191,0.4)'}
+          fill={stageSelected('stage4') ? 'rgba(59,130,246,0.12)' : 'rgba(0,0,0,0.22)'}
+          stroke={stageSelected('stage4') ? '#3b82f6' : 'rgba(59,130,246,0.4)'}
           strokeWidth={stageSelected('stage4') ? 2.5 : 1.5}
         />
         <text x="850" y="88" textAnchor="middle" className="svg-label stage-title">
@@ -451,7 +451,7 @@ export function CutawayViz({
               height="14"
               rx="2"
               fill={layer.color}
-              stroke="rgba(45,212,191,0.35)"
+              stroke="rgba(59,130,246,0.35)"
               opacity={0.95}
             />
             <text x="4" y="10" className="svg-label layer-tiny">
@@ -467,11 +467,11 @@ export function CutawayViz({
         transform={`translate(${undock},0)`}
       >
         <g transform="translate(960,100)">
-          <ellipse cx="28" cy="60" rx="22" ry="58" fill="#1e3548" stroke="#22d3ee" strokeWidth="3" />
-          <ellipse cx="28" cy="60" rx="14" ry="42" fill="#0c1a28" stroke="#0e7490" strokeWidth="2" />
-          <ellipse cx="28" cy="60" rx="8" ry="28" fill="rgba(34,211,238,0.5)" />
+          <ellipse cx="28" cy="60" rx="22" ry="58" fill="#12121a" stroke="#60a5fa" strokeWidth="3" />
+          <ellipse cx="28" cy="60" rx="14" ry="42" fill="#0c1a28" stroke="#1e40af" strokeWidth="2" />
+          <ellipse cx="28" cy="60" rx="8" ry="28" fill="rgba(96,165,250,0.5)" />
           {[0, 1, 2, 3].map((i) => (
-            <circle key={i} cx="28" cy={18 + i * 28} r="3" fill="#67e8f9" />
+            <circle key={i} cx="28" cy={18 + i * 28} r="3" fill="#93c5fd" />
           ))}
         </g>
         <g filter="url(#softGlow)">
@@ -479,7 +479,7 @@ export function CutawayViz({
             <polygon
               key={i}
               points="1035,110 1055,120 1035,130"
-              fill="#22d3ee"
+              fill="#60a5fa"
               opacity={running ? 0.55 + (i % 2) * 0.25 : 0.4}
               transform={`translate(0,${i * 28})`}
               className={running ? 'flow-arrow-cold' : undefined}

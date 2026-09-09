@@ -25,10 +25,10 @@ export function ExhaustParticles({ running, contamination, efficiency01 }: Props
       positions[i * 3 + 2] = (Math.random() - 0.5) * 0.42;
       speeds[i] = 0.85 + Math.random() * 1.55;
       seeds[i] = Math.random();
-      // Hot amber start
-      colors[i * 3] = 1;
-      colors[i * 3 + 1] = 0.45;
-      colors[i * 3 + 2] = 0.08;
+      // Hot red start
+      colors[i * 3] = 0.94;
+      colors[i * 3 + 1] = 0.27;
+      colors[i * 3 + 2] = 0.27;
     }
     return { positions, colors, speeds, seeds };
   }, []);
@@ -69,10 +69,10 @@ export function ExhaustParticles({ running, contamination, efficiency01 }: Props
       }
       arr[i * 3] = x;
       const t = Math.min(1, Math.max(0, (x + 4.6) / SPAN));
-      // Hot orange/amber → cool cyan/teal
-      carr[i * 3] = 1 - t * 0.88; // R drops
-      carr[i * 3 + 1] = 0.4 + t * 0.45; // G rises toward teal
-      carr[i * 3 + 2] = 0.05 + t * 0.9; // B rises to cyan
+      // Hot red → cool blue
+      carr[i * 3] = 0.94 - t * 0.7; // R drops from red
+      carr[i * 3 + 1] = 0.27 + t * 0.24; // G stays modest
+      carr[i * 3 + 2] = 0.27 + t * 0.69; // B rises to blue
     }
     pos.needsUpdate = true;
     col.needsUpdate = true;

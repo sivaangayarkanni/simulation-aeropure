@@ -19,13 +19,13 @@ export function Header({ onOpenDiagram, onToggleAgents, agentsOpen, tab, onTab }
           <svg viewBox="0 0 48 48" width="44" height="44">
             <defs>
               <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#2dd4bf" />
-                <stop offset="45%" stopColor="#22d3ee" />
-                <stop offset="100%" stopColor="#0d9488" />
+                <stop offset="0%" stopColor="#3b82f6" />
+                <stop offset="45%" stopColor="#60a5fa" />
+                <stop offset="100%" stopColor="#1d4ed8" />
               </linearGradient>
               <linearGradient id="agHot" x1="0" y1="1" x2="1" y2="0">
-                <stop offset="0%" stopColor="#fb923c" />
-                <stop offset="100%" stopColor="#fbbf24" />
+                <stop offset="0%" stopColor="#f87171" />
+                <stop offset="100%" stopColor="#ef4444" />
               </linearGradient>
             </defs>
             <circle cx="24" cy="24" r="22" fill="url(#ag)" opacity="0.2" />
@@ -33,14 +33,14 @@ export function Header({ onOpenDiagram, onToggleAgents, agentsOpen, tab, onTab }
             <path
               d="M12 20 Q24 14 36 20"
               fill="none"
-              stroke="#fb923c"
+              stroke="#f87171"
               strokeWidth="2"
               opacity="0.85"
             />
             <path
               d="M14 24 Q24 19 34 24"
               fill="none"
-              stroke="#22d3ee"
+              stroke="#60a5fa"
               strokeWidth="1.5"
               opacity="0.75"
             />
