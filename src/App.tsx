@@ -8,6 +8,7 @@ import { LegendPanel } from './components/LegendPanel';
 import { AgentsPanel } from './components/AgentsPanel';
 import { ProductIntelligence } from './components/ProductIntelligence';
 import { ServiceModeView } from './components/ServiceModeView';
+import { ProofModeView } from './components/ProofModeView';
 import { useSimEngine } from './hooks/useSimEngine';
 import { STAGES, SYSTEM_ADVANTAGES } from './lib/stages';
 import { PRODUCT_META } from './lib/knowledgeBase';
@@ -19,7 +20,7 @@ const SceneViewport = lazy(async () => {
   return { default: m.SceneViewport };
 });
 
-type TabId = 'simulation' | 'intelligence' | 'service';
+type TabId = 'simulation' | 'proof' | 'intelligence' | 'service';
 type ShellMode = 'solid' | 'cutaway' | 'xray';
 
 export default function App() {
@@ -179,6 +180,20 @@ export default function App() {
               />
             </div>
           </>
+        )}
+
+
+        {tab === 'proof' && (
+          <div className="tab-pane">
+            <ProofModeView
+              metrics={metrics}
+              controls={controls}
+              fanAngle={snap.fanAngleDeg}
+              oilFlowPhase={snap.oilFlowPhase}
+              heatShimmerPhase={snap.heatShimmerPhase}
+              oilCoolantTempC={snap.oilCoolantTempC}
+            />
+          </div>
         )}
 
         {tab === 'intelligence' && (

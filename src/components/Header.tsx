@@ -1,7 +1,7 @@
 import { PRODUCT_META } from '../lib/knowledgeBase';
 import { SYSTEM_CONCEPT, SYSTEM_TAGLINE, SYSTEM_TITLE } from '../lib/stages';
 
-type TabId = 'simulation' | 'intelligence' | 'service';
+type TabId = 'simulation' | 'proof' | 'intelligence' | 'service';
 
 interface Props {
   onOpenDiagram: () => void;
@@ -62,6 +62,7 @@ export function Header({ onOpenDiagram, onToggleAgents, agentsOpen, tab, onTab }
         {(
           [
             ['simulation', 'Simulation'],
+            ['proof', 'Proof Mode'],
             ['intelligence', 'Product Intelligence'],
             ['service', 'Service Mode'],
           ] as const
